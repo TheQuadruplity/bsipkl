@@ -8,11 +8,4 @@ class Home extends BaseController
     {
         $this->page('welcome_message');
     }
-
-    private function page($page, $data = [])
-    {
-        echo view('templates/header');
-        echo view($page, $data);
-        echo view('templates/footer');
-    }
 }

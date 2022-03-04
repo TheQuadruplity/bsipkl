@@ -37,6 +37,25 @@ class BaseController extends Controller
      */
     protected $helpers = [];
 
+
+    /**
+     * Protected Variables (custom)
+     */
+
+    protected $sidebar = [
+        ['Jurnal'],
+        ['PosNeraca', 'Pos Neraca', 'fas fa-balance-scale'],
+        ['PosBeban', 'Pos Beban', 'fas fa-weight-hanging'],
+        [],
+        ['Pengambilan', 'Pengambilan', 'fas fa-arrow-right'],
+        ['Penyelesaian', 'Penyelesaian', 'fas fa-arrow-left'],
+        [],
+        ['Database'],
+        ['Beban', 'Daftar Beban', 'fas fa-th-list'],
+        ['Rekening', 'Daftar Rekening', 'fas fa-credit-card'],
+
+        ];
+
     /**
      * Constructor.
      */
@@ -49,4 +68,15 @@ class BaseController extends Controller
 
         // E.g.: $this->session = \Config\Services::session();
     }
+
+    /**
+     * Protected Methods (custom)
+     */
+    protected function page($page, $data = [])
+    {
+        echo view('templates/header', ['data' => $this->sidebar, 'page' => get_called_class()]);
+        echo view('pages/'.$page, $data);
+        echo view('templates/footer');
+    }
+
 }
