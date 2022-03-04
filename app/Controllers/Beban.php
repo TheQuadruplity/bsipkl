@@ -8,7 +8,7 @@ class Beban extends BaseController
 {
     public function index(){
         $model = new BebanModel();
-        $databeban = $model->findAll();
-        $this->page('daftar_beban', ['data' => $databeban]);
+        $data = $model->findAll();
+        $this->page('daftar_beban', ['data' => $data]);
     }
 }
