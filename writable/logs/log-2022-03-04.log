@@ -1,0 +1,11 @@
+CRITICAL - 2022-03-04 10:12:11 --> Invalid file: pages/dashboard.php
+#0 C:\xampp2\htdocs\bsipkl\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/dashboard...')
+#1 C:\xampp2\htdocs\bsipkl\system\Common.php(1089): CodeIgniter\View\View->render('pages/dashboard', Array, true)
+#2 C:\xampp2\htdocs\bsipkl\app\Controllers\BaseController.php(78): view('pages/dashboard', Array)
+#3 C:\xampp2\htdocs\bsipkl\app\Controllers\Page.php(10): App\Controllers\BaseController->page('dashboard')
+#4 C:\xampp2\htdocs\bsipkl\system\CodeIgniter.php(825): App\Controllers\Page->index()
+#5 C:\xampp2\htdocs\bsipkl\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Page))
+#6 C:\xampp2\htdocs\bsipkl\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp2\htdocs\bsipkl\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp2\htdocs\bsipkl\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp2\\htdoc...')
+#9 {main}
