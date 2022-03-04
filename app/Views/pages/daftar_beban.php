@@ -14,22 +14,15 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>id</th>
+                        <th>No.</th>
                         <th>Nama Beban</th>
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>id</th>
-                        <th>Nama Beban</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
                 <tbody>
-                    <?php foreach($data as $d): ?>
+                    <?php foreach($data as $i => $d): ?>
                     <tr>
-                        <td><?= esc($d['id']) ?></td>
+                        <td><?= esc($i+1) ?></td>
                         <td><?= esc($d['nama']) ?></td>
                         <td>
                             <a href="#" class="btn btn-danger" data-id='<?= esc($d['id']) ?>'>Hapus</a>
