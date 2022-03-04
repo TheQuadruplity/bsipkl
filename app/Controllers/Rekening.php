@@ -11,4 +11,16 @@ class Rekening extends BaseController
         $data = $model->findAll();
         $this->page('daftar_rekening', ['data' => $data]);
     }
+
+    public function save(){
+        if(true){ //jaga jaga
+            $model = new RekeningModel();
+            $model->save([
+                'nomor' => $this->request->getPost('nomorRekening'),
+                'nama' => $this->request->getPost('namaRekening')
+            ]);
+        }
+
+        return redirect()->to(base_url().'/rekening');
+    }
 }

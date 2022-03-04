@@ -50,14 +50,14 @@
         </button>
       </div>
       <div class="modal-body">
-      <form>
+      <form action="<?= base_url() ?>/Rekening/save" method="POST">
         <div class="form-group">
             <label for="nomorRekening">Nomor Rekening</label>
-            <input type="text" class="form-control" id="nomorRekening" placeholder="Masukkan nomor rekening">
+            <input type="text" class="form-control" id="nomorRekening" name="nomorRekening" placeholder="Masukkan nomor rekening">
         </div>
         <div class="form-group">
             <label for="nomorRekening">Nama Rekening</label>
-            <input type="text" class="form-control" id="namaRekening" placeholder="Masukkan nama rekening">
+            <input type="text" class="form-control" id="namaRekening" name="namaRekening" placeholder="Masukkan nama rekening">
         </div>
       </div>
       <div class="modal-footer">
