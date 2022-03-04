@@ -51,6 +51,7 @@ class BaseController extends Controller
         ['Penyelesaian', 'Penyelesaian', 'fas fa-arrow-left'],
         [],
         ['Database'],
+        ['JenisPersekot', 'Jenis Persekot', 'fas fa-landmark'],
         ['Beban', 'Daftar Beban', 'fas fa-th-list'],
         ['Rekening', 'Daftar Rekening', 'fas fa-credit-card'],
 
