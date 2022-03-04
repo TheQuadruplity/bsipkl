@@ -27,16 +27,13 @@
                     </tr>
                 </tfoot>
                 <tbody>
+                    <?php foreach($data as $d): ?>
                     <tr>
-                        <td>1230102921902192</td>
-                        <td>Rekening Air</td>
-                        <td><a href="#" class="btn btn-danger">Hapus</a></td>
+                        <td><?= esc($d['nomor']) ?></td>
+                        <td><?= esc($d['nama']) ?></td>
+                        <td><a href="#" class="btn btn-danger" data-id='<?= esc($d['nomor']) ?>'>Hapus</a></td>
                     </tr>
-                    <tr>
-                        <td>9304328-40</td>
-                        <td>Rekening Bensin</td>
-                        <td><a href="#" class="btn btn-danger">Hapus</a></td>
-                    </tr>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>

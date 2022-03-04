@@ -2,9 +2,13 @@
 
 namespace App\Controllers;
 
+use App\Models\RekeningModel;
+
 class Rekening extends BaseController
 {
     public function index(){
-        $this->page('daftar_rekening');
+        $model = new RekeningModel();
+        $datarek = $model->findAll();
+        $this->page('daftar_rekening', ['data' => $datarek]);
     }
 }
