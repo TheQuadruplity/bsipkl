@@ -23,4 +23,15 @@ class Rekening extends BaseController
 
         return redirect()->to(base_url().'/rekening');
     }
+
+    public function delete($nomor){
+        if(true){ //jaga jaga
+            $db = \Config\Database::connect();
+            $table = $db->table('rekening');
+            $table->where('nomor', $nomor);
+            $table->delete();
+        }
+
+        return redirect()->to(base_url().'/rekening');
+    }
 }

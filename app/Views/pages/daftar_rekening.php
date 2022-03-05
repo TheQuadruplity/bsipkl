@@ -29,7 +29,7 @@
                         <td><?= esc($i+1) ?></td>
                         <td><?= esc($d['nomor']) ?></td>
                         <td><?= esc($d['nama']) ?></td>
-                        <td><a href="#" class="btn btn-danger" data-id='<?= esc($d['nomor']) ?>'>Hapus</a></td>
+                        <td><a href="<?= base_url()?>/rekening/delete/<?= esc($d['nomor']) ?>" class="btn btn-danger">Hapus</a></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
@@ -50,7 +50,7 @@
         </button>
       </div>
       <div class="modal-body">
-      <form action="<?= base_url() ?>/Rekening/save" method="POST">
+      <form action="<?= base_url() ?>/rekening/save" method="POST">
         <div class="form-group">
             <label for="nomorRekening">Nomor Rekening</label>
             <input type="text" class="form-control" id="nomorRekening" name="nomorRekening" placeholder="Masukkan nomor rekening">
