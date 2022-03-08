@@ -7,6 +7,7 @@ use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use NumberFormatter;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -41,6 +42,7 @@ class BaseController extends Controller
     /**
      * Protected Variables (custom)
      */
+    protected $currencyfmt;
 
     protected $sidebar = [
         ['Jurnal'],
@@ -68,6 +70,8 @@ class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+
+        $this->currencyfmt = numfmt_create('ID_id', NumberFormatter::CURRENCY);
     }
 
     /**
