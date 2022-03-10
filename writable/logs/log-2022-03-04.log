@@ -9,3 +9,28 @@ CRITICAL - 2022-03-04 10:12:11 --> Invalid file: pages/dashboard.php
 #7 C:\xampp2\htdocs\bsipkl\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #8 C:\xampp2\htdocs\bsipkl\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp2\\htdoc...')
 #9 {main}
+CRITICAL - 2022-03-04 10:42:54 --> Unsupported operand types
+#0 C:\xampp2\htdocs\bsipkl\system\View\View.php(210): include()
+#1 C:\xampp2\htdocs\bsipkl\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp2\htdocs\bsipkl\system\Common.php(1089): CodeIgniter\View\View->render('pages/jenis_per...', Array, true)
+#3 C:\xampp2\htdocs\bsipkl\app\Controllers\BaseController.php(79): view('pages/jenis_per...', Array)
+#4 C:\xampp2\htdocs\bsipkl\app\Controllers\JenisPersekot.php(13): App\Controllers\BaseController->page('jenis_persekot', Array)
+#5 C:\xampp2\htdocs\bsipkl\system\CodeIgniter.php(825): App\Controllers\JenisPersekot->index()
+#6 C:\xampp2\htdocs\bsipkl\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\JenisPersekot))
+#7 C:\xampp2\htdocs\bsipkl\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp2\htdocs\bsipkl\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp2\htdocs\bsipkl\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp2\\htdoc...')
+#10 {main}
+CRITICAL - 2022-03-04 10:45:47 --> Undefined variable: i
+#0 C:\xampp2\htdocs\bsipkl\app\Views\pages\daftar_beban.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp2\\htdoc...', 25, Array)
+#1 C:\xampp2\htdocs\bsipkl\system\View\View.php(210): include('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\bsipkl\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp2\htdocs\bsipkl\system\Common.php(1089): CodeIgniter\View\View->render('pages/daftar_be...', Array, true)
+#4 C:\xampp2\htdocs\bsipkl\app\Controllers\BaseController.php(79): view('pages/daftar_be...', Array)
+#5 C:\xampp2\htdocs\bsipkl\app\Controllers\Beban.php(12): App\Controllers\BaseController->page('daftar_beban', Array)
+#6 C:\xampp2\htdocs\bsipkl\system\CodeIgniter.php(825): App\Controllers\Beban->index()
+#7 C:\xampp2\htdocs\bsipkl\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Beban))
+#8 C:\xampp2\htdocs\bsipkl\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp2\htdocs\bsipkl\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp2\htdocs\bsipkl\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp2\\htdoc...')
+#11 {main}
