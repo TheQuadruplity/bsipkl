@@ -1,10 +1,6 @@
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Pos Neraca</h1>
-<p class="mb-4">Berikut adalah jurnal untuk setiap bulan</p>
-
-<!-- Button trigger modal -->
-<label for="bulan">Bulan dan tahun</label>
-<input type="month" class="form-control" id="bulan">
+<h1 class="h3 mb-2 text-gray-800">Persekot Harian tanggal <?=esc($day)?>-<?=esc($month)?>-<?=esc($year)?> </h1>
+<p class="mb-4">Berikut adalah persekot harian</p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -17,18 +13,22 @@
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Tanggal</th>
+                        <th>Waktu</th>
+                        <th>Nama</th>
+                        <th>Debit</th>
+                        <th>Kredit</th>
                         <th>Saldo</th>
-                        <th>Persekot Harian</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($data as $i => $d): ?>
                     <tr>
                         <td><?= esc($i) ?></td>
-                        <td><?= esc("$i-$month-$year") ?></td>
-                        <td style="text-align: right;"><?= esc($d) ?></td>
-                        <td><a href="<?= base_url()?>/posneraca/harian/<?= esc("$year-$month-$i") ?>" class="btn btn-primary">Lihat</a></td>
+                        <td><?= esc($d['waktu']) ?></td>
+                        <td><?= esc($d['nama']) ?></td>
+                        <td style="text-align: right;"><?= esc($d['debit']) ?></td>
+                        <td style="text-align: right;"><?= esc($d['kredit']) ?></td>
+                        <td style="text-align: right;"><?= esc($d['saldo']) ?></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>

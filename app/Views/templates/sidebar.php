@@ -26,7 +26,7 @@ foreach($data as $d){
             $pname = explode('\\', $page);
             $pname = $pname[2];
             if(!isset($d[2])) $d[2] = '';
-            echo "<li class='nav-item".($pname == $d[0] ? ' active' : '')."'><a class='nav-link' href='$d[0]'><i class='$d[2]'></i><span>$d[1]</span></a></li>";
+            echo "<li class='nav-item".($pname == $d[0] ? ' active' : '')."'><a class='nav-link' href='".base_url()."/$d[0]'><i class='$d[2]'></i><span>$d[1]</span></a></li>";
             break;
     }
     
