@@ -23,13 +23,10 @@ class JurnalModel extends Model{
         $db = \Config\Database::connect();
         $month = $tgl[1];
         $year = $tgl[0];
-        
 
         $q = $db->query("CALL get_jurnal($month, $year)");
         $res = $q->getResultArray();
-        $dt = new DateTime();
-        $dt->setDate(date('Y'), date('m'), 1);
-        $dt->setTime(0, 0);
+        $dt = new DateTime($bulan.'-1');
         $nt = clone $dt;
         $nt = $nt->add(new DateInterval('P1M'));
         $df = date_diff($dt, $nt, true)->days;
@@ -39,13 +36,29 @@ class JurnalModel extends Model{
             $qdata[$d['hari']] = numfmt_format($currencyfmt, $d['saldo']);
         }
 
+        $now = date('Y')*12+date('m');
+        $tgt = $year*12+$month;
         $daydata = [0 => $qdata[0]];
-        for($i = 1; $i <= $df; $i++){
-            if(isset($qdata[$i])){
-                $daydata[$i] = $qdata[$i];
+        if($now > $tgt){
+            for($i = 1; $i <= $df; $i++){
+                if(isset($qdata[$i])){
+                    $daydata[$i] = $qdata[$i];
+                }
+                else{
+                    $daydata[$i] = $daydata[$i-1];
+                }
             }
-            else{
-                $daydata[$i] = $daydata[$i-1];
+        }
+        else if($now == $tgt){
+            $day = date('d');
+            for($i = 1; $i <= $df; $i++){
+                if($day < $i) break;
+                if(isset($qdata[$i])){
+                    $daydata[$i] = $qdata[$i];
+                }
+                else{
+                    $daydata[$i] = $daydata[$i-1];
+                }
             }
         }
         unset($daydata[0]);
