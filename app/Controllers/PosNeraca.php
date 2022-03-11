@@ -9,6 +9,10 @@ use DateTime;
 class PosNeraca extends BaseController
 {
     public function index(){
+        $model = new JurnalModel();
+        $this->page('pos_neraca', $model->getJurnal(date('Y-m')));
+
+/*
         $db = \Config\Database::connect();
         $month = date('m');
         $year = date('Y');
@@ -41,6 +45,7 @@ class PosNeraca extends BaseController
         //$dt = $dt->add(new DateInterval('P1D'));
         $this->page('pos_neraca', 
         ['data' => $daydata, 'month' => $month, 'year' => $year]);
+*/
     }
 
     public function harian($tanggal){
@@ -71,5 +76,13 @@ class PosNeraca extends BaseController
         $this->page('persekot_harian', 
         ['data' => $data, 'year' => $tgl[0], 'month' => $tgl[1], 'day' => $tgl[2]]);
 
+    }
+
+    public function jurnal($bulan){
+        if($this->request->isAJAX()){
+            $model = new JurnalModel();
+            $data = $model->getJurnal(date($bulan));
+            echo view('minis/jurnal', $data);
+        }
     }
 }

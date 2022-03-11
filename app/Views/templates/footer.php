@@ -54,6 +54,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<?= esc(base_url())?>/js/sb-admin-2.min.js"></script>
+    <script src="<?= esc(base_url())?>/js/ajax.js"></script>
 
     <!-- Page level plugins -->
     <script src="<?= esc(base_url())?>/vendor/datatables/jquery.dataTables.min.js"></script>
