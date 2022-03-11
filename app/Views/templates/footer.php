@@ -46,7 +46,6 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="<?= esc(base_url())?>/vendor/jquery/jquery.min.js"></script>
     <script src="<?= esc(base_url())?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->

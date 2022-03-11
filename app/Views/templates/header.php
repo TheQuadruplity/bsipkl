@@ -23,6 +23,9 @@
     <!-- Custom styles for this page -->
     <link href="<?= esc(base_url())?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <!-- Jquery -->
+    <script src="<?= esc(base_url())?>/vendor/jquery/jquery.min.js"></script>
+
 </head>
 
 </head>
