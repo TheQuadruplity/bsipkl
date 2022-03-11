@@ -18,7 +18,6 @@
         <label for="narasi">Jumlah</label>
         <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah" required>
     </div>
-    </div>
     <div class="modal-footer">
         <button type="submit" class="btn btn-primary">Simpan</button>
     </div>
