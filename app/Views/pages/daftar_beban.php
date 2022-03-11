@@ -19,6 +19,7 @@
                         <th>No.</th>
                         <th>Nama Beban</th>
                         <th>Action</th>
+                        <th>Rekening Beban</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,9 +29,9 @@
                         <td><?= esc($d['nama']) ?></td>
                         <td>
                             <a href="<?= base_url()?>/beban/delete/<?= esc($d['id']) ?>" class="btn btn-danger">Hapus</a>
-                            <!-- <a href="#" class="btn btn-warning" data-id='<?= esc($d['id']) ?>'>Edit</a> -->
                             <button type="button" class="btn btn-warning edit" data-toggle="modal" data-target="#editModal" data-id='<?= esc($d['id']) ?>' data-nama='<?= esc($d['nama']) ?>'>Edit</button>
                         </td>
+                        <td><a href="<?= base_url()?>/beban/rekening/<?= esc($d['id']) ?>" class="btn btn-primary">Lihat</a></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
@@ -92,9 +93,4 @@
   </div>
 </div>
 
-<script>
-    $('.edit').click(function (e) { 
-        $('#editnama').val(this.dataset['nama']);
-        $('#editid').val(this.dataset['id']);
-    });
-</script>
+<script>$('.edit').click(function (e){$('#editnama').val(this.dataset['nama']);$('#editid').val(this.dataset['id']);});</script>
