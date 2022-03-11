@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\BebanModel;
+use App\Models\PenyelesaianModel;
 
 class Beban extends BaseController
 {
@@ -40,5 +41,24 @@ class Beban extends BaseController
         }
 
         return redirect()->to(base_url().'/beban');
+    }
+
+    public function rekening($id){
+        $model = new PenyelesaianModel();
+        $data = $model->builder()
+        ->select('penyelesaian.waktu, penyelesaian.jumlah, rekening, persekot.narasi AS persekot')
+        ->join('persekot', 'penyelesaian.persekot = persekot.id')
+        ->where('beban', $id)
+        ->get()->getResultArray();
+        $sum = 0;
+        foreach($data as $i => $d){
+            $sum += $data[$i]['jumlah'];
+            $data[$i]['jumlah'] = numfmt_format($this->currencyfmt, $data[$i]['jumlah']);
+        }
+        $sum = numfmt_format($this->currencyfmt, $sum);
+        $modelb = new BebanModel();
+        $nama = $modelb->find($id);
+
+        $this->page('rekening_beban', ['data' => $data, 'nama' => $nama['nama'], 'jumlah' => $sum]);
     }
 }
