@@ -13,17 +13,28 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Tanggal</th>
-                        <th>Saldo</th>
-                        <th>Persekot Harian</th>
+                        <th>Waktu</th>
+                        <th>Beban</th>
+                        <th>Persekot</th>
+                        <th>Rekening</th>
+                        <th>Jumlah</th>
                     </tr>
                 </thead>
-                <tbody id='jurnal'>
-                    <?= view('minis/jurnal', ['data' => $data, 'month' => $month, 'year' => $year]) ?>
+                <tbody>
+                    <?php foreach($data as $i => $d): ?>
+                    <tr>
+                        <td><?= esc($i+1) ?></td>
+                        <td><?= esc($d['waktu']) ?></td>
+                        <td><?= esc($d['beban']) ?></td>
+                        <td><?= esc($d['persekot']) ?></td>
+                        <td><?= esc($d['rekening']) ?></td>
+                        <td style="text-align: right;"><?= esc($jumlah[$i]) ?></td>
+                    </tr>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>
