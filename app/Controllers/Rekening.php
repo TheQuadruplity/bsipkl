@@ -13,7 +13,7 @@ class Rekening extends BaseController
     }
 
     public function save(){
-        if(true){ //jaga jaga
+        if($this->request->getMethod() == 'post'){
             $model = new RekeningModel();
             $model->save([
                 'nomor' => $this->request->getPost('nomorRekening'),
@@ -25,12 +25,10 @@ class Rekening extends BaseController
     }
 
     public function delete($nomor){
-        if(true){ //jaga jaga
-            $db = \Config\Database::connect();
-            $table = $db->table('rekening');
-            $table->where('nomor', $nomor);
-            $table->delete();
-        }
+        $db = \Config\Database::connect();
+        $table = $db->table('rekening');
+        $table->where('nomor', $nomor);
+        $table->delete();
 
         return redirect()->to(base_url().'/rekening');
     }
