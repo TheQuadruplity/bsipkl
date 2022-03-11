@@ -1,10 +1,6 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Pos Neraca</h1>
-<p class="mb-4">Berikut adalah jurnal untuk setiap bulan</p>
-
-<!-- Button trigger modal -->
-<label for="bulan">Bulan dan tahun</label>
-<input type="month" class="form-control" id="bulan">
+<p class="mb-4">Berikut adalah jurnal untuk setiap persekot</p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -18,10 +14,10 @@
                     <tr>
                         <th>No.</th>
                         <th>Waktu</th>
-                        <th>Beban</th>
-                        <th>Persekot</th>
-                        <th>Rekening</th>
+                        <th>Narasi</th>
+                        <th>Jenis Persekot</th>
                         <th>Jumlah</th>
+                        <th>Tersisa</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,10 +25,10 @@
                     <tr>
                         <td><?= esc($i+1) ?></td>
                         <td><?= esc($d['waktu']) ?></td>
-                        <td><?= esc($d['beban']) ?></td>
-                        <td><?= esc($d['persekot']) ?></td>
-                        <td><?= esc($d['rekening']) ?></td>
-                        <td style="text-align: right;"><?= esc($jumlah[$i]) ?></td>
+                        <td><?= esc($d['narasi']) ?></td>
+                        <td><?= esc($d['jenis']) ?></td>
+                        <td style="text-align: right;"><?= esc($d['jumlah']) ?></td>
+                        <td style="text-align: right;"><?= esc($d['sisa']) ?></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
