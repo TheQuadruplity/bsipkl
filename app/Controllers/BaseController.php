@@ -45,19 +45,19 @@ class BaseController extends Controller
     protected $currencyfmt;
 
     protected $sidebar = [
-        ['Jurnal'],
-        ['Jurnal', 'Jurnal', 'fas fa-book'],
-        ['PosNeraca', 'Pos Neraca', 'fas fa-balance-scale'],
-        ['PosBeban', 'Pos Beban', 'fas fa-weight-hanging'],
+        ['jurnal', 'Jurnal', 'fas fa-book'],
+        ['posneraca', 'Pos Neraca', 'fas fa-balance-scale'],
+        ['posbeban', 'Pos Beban', 'fas fa-weight-hanging'],
         [],
-        ['Pengambilan', 'Pengambilan', 'fas fa-arrow-right'],
-        ['Penyelesaian', 'Penyelesaian', 'fas fa-arrow-left'],
+        ['pengambilan', 'Pengambilan', 'fas fa-arrow-right'],
+        ['penyelesaian', 'Penyelesaian', 'fas fa-arrow-left'],
         [],
-        ['Database'],
-        ['JenisPersekot', 'Jenis Persekot', 'fas fa-landmark'],
-        ['Beban', 'Daftar Beban', 'fas fa-th-list'],
-        ['Rekening', 'Daftar Rekening', 'fas fa-credit-card'],
-
+        ['database'],
+        ['jenispersekot', 'Jenis Persekot', 'fas fa-landmark'],
+        ['beban', 'Daftar Beban', 'fas fa-th-list'],
+        ['rekening', 'Daftar Rekening', 'fas fa-credit-card'],
+        [],
+        ['admin', 'Admin', "fas fa-user"],
         ];
 
     /**
