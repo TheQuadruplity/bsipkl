@@ -16,4 +16,15 @@ class PosNeraca extends BaseController
         }
         $this->page('pos_neraca', ['data' => $data]);
     }
+
+    public function printMemo($id){
+        $model = new PersekotModel();
+        $data = $model->memoPersekot($id);
+        $reg = substr($data['id']+10000, 1).'/'.
+            substr($data['idjenis']+100, 1).'/'.
+            date('m-d', strtotime($data['waktu'])).'/'.
+            date('Y', strtotime($data['waktu']));
+        echo view('prints/memo_persekot', ['data' => $data, 'reg' => $reg]);
+        
+    }
 }

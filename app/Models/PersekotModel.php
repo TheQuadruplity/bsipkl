@@ -16,10 +16,19 @@ class PersekotModel extends Model{
 
     public function getPersekot(){
         $data = $this->builder()
-        ->select('waktu, narasi, jumlah, jenis_persekot.nama as jenis, sisa')
+        ->select('persekot.id AS id, waktu, narasi, jumlah, jenis_persekot.nama as jenis, sisa')
         ->join('jenis_persekot', 'persekot.jenis = jenis_persekot.id')
         ->get()->getResultArray();
-;
+        return $data;
+    }
+
+    public function memoPersekot($id){
+        $data = $this->builder()
+        ->select('persekot.id as id, jenis_persekot.id as idjenis, jenis_persekot.nama as namajenis,
+        narasi, waktu, jumlah, sisa')
+        ->join('jenis_persekot', 'persekot.jenis = jenis_persekot.id')
+        ->where('persekot.id', $id)
+        ->get()->getRowArray();
         return $data;
     }
 }
