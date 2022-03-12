@@ -24,7 +24,9 @@
     <?= esc(print_r($data))?>
     
 
-    <script>window.print()</script>
+
 </body>
+
+<script>window.print()</script>
 
 </html>
