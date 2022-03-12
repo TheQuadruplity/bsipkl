@@ -26,9 +26,9 @@
                         <td><?= esc($i) ?></td>
                         <td><?= esc($d['waktu']) ?></td>
                         <td><?= esc($d['nama']) ?></td>
-                        <td style="text-align: right;"><?= esc($d['debit']) ?></td>
-                        <td style="text-align: right;"><?= esc($d['kredit']) ?></td>
-                        <td style="text-align: right;"><?= esc($d['saldo']) ?></td>
+                        <td class="text-right"><?= esc($d['debit']) ?></td>
+                        <td class="text-right"><?= esc($d['kredit']) ?></td>
+                        <td class="text-right"><?= esc($d['saldo']) ?></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>

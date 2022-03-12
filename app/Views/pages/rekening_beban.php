@@ -26,13 +26,13 @@
                         <td><?= esc($d['waktu']) ?></td>
                         <td><?= esc($d['persekot']) ?></td>
                         <td><?= esc($d['rekening']) ?></td>
-                        <td style="text-align: right;"><?= esc($d['jumlah']) ?></td>
+                        <td class="text-right"><?= esc($d['jumlah']) ?></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
                 <tfoot>
-                    <th style="text-align: right;" colspan="4">Jumlah</th>
-                    <th style="text-align: right;"><?= esc($jumlah) ?></th>
+                    <th class="text-right" colspan="4">Jumlah</th>
+                    <th class="text-right"><?= esc($jumlah) ?></th>
                 </tfoot>
             </table>
         </div>

@@ -28,7 +28,7 @@
                         <td><?= esc($d['beban']) ?></td>
                         <td><?= esc($d['persekot']) ?></td>
                         <td><?= esc($d['rekening']) ?></td>
-                        <td style="text-align: right;"><?= esc($jumlah[$i]) ?></td>
+                        <td class="text-right"><?= esc($jumlah[$i]) ?></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
