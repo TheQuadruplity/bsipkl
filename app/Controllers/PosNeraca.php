@@ -10,6 +10,7 @@ class PosNeraca extends BaseController
         $model = new PersekotModel();
         $data = $model->getPersekot();
         for($i = 0; $i < sizeof($data); $i++){
+            $data[$i]['success'] = $data[$i]['sisa']>=0?'table-success':'';
             $data[$i]['jumlah'] = numfmt_format($this->currencyfmt, $data[$i]['jumlah']);
             $data[$i]['sisa'] = numfmt_format($this->currencyfmt, $data[$i]['sisa']);
         }

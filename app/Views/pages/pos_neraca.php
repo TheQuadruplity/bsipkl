@@ -22,13 +22,13 @@
                 </thead>
                 <tbody>
                     <?php foreach($data as $i => $d): ?>
-                    <tr>
+                    <tr class="<?=$d['success']?>">
                         <td><?= esc($i+1) ?></td>
                         <td><?= esc($d['waktu']) ?></td>
                         <td><?= esc($d['narasi']) ?></td>
                         <td><?= esc($d['jenis']) ?></td>
-                        <td style="text-align: right;"><?= esc($d['jumlah']) ?></td>
-                        <td style="text-align: right;"><?= esc($d['sisa']) ?></td>
+                        <td class="text-right"><?= esc($d['jumlah']) ?></td>
+                        <td class="text-right"><?= esc($d['sisa']) ?></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
