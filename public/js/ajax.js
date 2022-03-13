@@ -9,3 +9,24 @@ $('#bulan').change(function(){
         }
     });
 })
+
+$('#confirm').click(function (e) { 
+    e.preventDefault();
+    console.log("admin/validatepass/"+$('#oldpassword').val());
+    $.ajax({
+        type: "POST",
+        url: "admin/validatepass/"+$('#oldpassword').val(),
+        dataType: "dataType",
+        statusCode: {
+            202: function() {
+              document.getElementById("update").name = $("#update").data("key");
+              document.getElementById("update").value = $("#update").data("value");
+              document.formsubmit.submit();
+            },
+            403: function() {
+                document.getElementById("oldpassword").setCustomValidity("Password salah");
+                document.formsubmit.reportValidity();
+              }
+          }
+    });
+});
