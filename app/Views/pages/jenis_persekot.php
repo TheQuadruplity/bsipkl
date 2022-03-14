@@ -26,9 +26,9 @@
                     <tr>
                         <td><?= esc($i+1) ?></td>
                         <td><?= esc($d['nama']) ?></td>
-                        <td>
-                        <a href="<?= base_url()?>/jenispersekot/delete/<?= esc($d['id']) ?>" class="btn btn-danger">Hapus</a>
-                            <button type="button" class="btn btn-warning edit" data-toggle="modal" data-target="#editModal" data-id='<?= esc($d['id']) ?>' data-nama='<?= esc($d['nama']) ?>'>Edit</button>
+                        <td class="text-center">
+                        <a href="<?= base_url()?>/jenispersekot/delete/<?= esc($d['id']) ?>" class="btn btn-danger btn-sm">Hapus</a>
+                            <button type="button" class="btn btn-warning edit btn-sm" data-toggle="modal" data-target="#editModal" data-id='<?= esc($d['id']) ?>' data-nama='<?= esc($d['nama']) ?>'>Edit</button>
                         </td>
                     </tr>
                     <?php endforeach ?>

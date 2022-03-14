@@ -25,6 +25,11 @@
 
     <!-- Jquery -->
     <script src="<?= esc(base_url())?>/vendor/jquery/jquery.min.js"></script>
+    <style>
+        th{
+            text-align: center;
+        }
+    </style>
 
 </head>
 

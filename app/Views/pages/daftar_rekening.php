@@ -29,7 +29,7 @@
                         <td><?= esc($i+1) ?></td>
                         <td><?= esc($d['nomor']) ?></td>
                         <td><?= esc($d['nama']) ?></td>
-                        <td><a href="<?= base_url()?>/rekening/delete/<?= esc($d['nomor']) ?>" class="btn btn-danger">Hapus</a></td>
+                        <td class="text-center"><a href="<?= base_url()?>/rekening/delete/<?= esc($d['nomor']) ?>" class="btn btn-danger btn-sm">Hapus</a></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
