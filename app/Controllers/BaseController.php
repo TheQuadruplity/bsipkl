@@ -76,6 +76,9 @@ class BaseController extends Controller
         $this->currencyfmt = numfmt_create('ID_id', NumberFormatter::CURRENCY);
 
         if(authRedirect()) session()->setTempdata('auth', session()->getTempdata('auth'));
+        else{
+            session()->setFlashdata('msg', 'Sesi anda telah habis, silakan login');
+        }
     }
 
     /**
@@ -89,9 +92,8 @@ class BaseController extends Controller
     }
 
     protected function atrdr(){
-        if(!authRedirect()) return redirect()->to(base_url('login'));
+        if(!authRedirect()) echo redirect()->to(base_url('login'));
         else session()->setTempdata('auth', session()->getTempdata('auth'));
-        dd('aaa');
     }
 
 }

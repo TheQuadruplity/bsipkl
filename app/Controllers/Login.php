@@ -13,7 +13,6 @@ class Login extends Controller
 
     public function index()
     {
-        $data['msg'] = '';
         if($this->request->getMethod() == 'post'){
             $model = new AdminModel();
             $res = $model->find()[0];
@@ -30,6 +29,10 @@ class Login extends Controller
         }
         else{
             if(!authRedirect()){
+                if(session()->getFlashdata('msg')){
+                    $data['msg'] = session()->getFlashdata('msg');
+                }
+                else $data['msg'] = '';
                 echo view('pages/login', $data);
             }
             else{

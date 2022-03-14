@@ -35,9 +35,8 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row" >
-                            
-                        <img class="col-lg-6 d-none d-lg-block" src="<?= base_url()?>/logo-bsi.png" style="background-color: #0ca49d;"></img>
-                            <div class="col-lg-6">
+                            <img class="col-lg-6 d-none d-lg-block" src="<?= base_url()?>/logo-bsi.png" style="background-color: #0ca49d;"></img>
+                            <div class="col-lg-6 my-auto">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
