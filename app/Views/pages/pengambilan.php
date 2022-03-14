@@ -1,6 +1,6 @@
 <h1 class="h3 mb-2 text-gray-800">Form Input Pengambilan</h1>
-<!--p class="mb-4">Berikut adalah database Jenis Persekot</p-->
-<!-- <div class="container my-5"> -->
+
+
     <div class="card">
         <form action="<?= base_url() ?>/pengambilan/save" method="POST">
             <div class="card-body">
@@ -14,11 +14,15 @@
                 </div>
                 <div class="form-group">
                     <label for="narasi">Narasi</label>
-                    <input type="text" class="form-control" id="narasi" name="narasi" placeholder="Masukkan narasi" required>
+                    <input type="text" class="form-control" id="narasi" name="narasi" placeholder="Masukkan narasi" required maxlength="50">
                 </div>
                 <div class="form-group">
-                    <label for="narasi">Jumlah</label>
-                    <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah" required>
+                    <label for="jumlah">Jumlah</label>
+                    <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah" required min="0">
+                </div>
+                <div class="form-group">
+                    <label for="keterangan">Keterangan</label>
+                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="opsional" maxlength="100"></textarea>
                 </div>
             </div>
             <div class="card-footer">
@@ -26,4 +30,3 @@
             </div>
         </form>
     </div>
-<!-- </div> -->

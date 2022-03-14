@@ -8,7 +8,7 @@ class PersekotModel extends Model{
     protected $table = 'persekot';
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
-    protected $allowedFields = ['waktu', 'narasi', 'jumlah', 'jenis', 'sisa'];
+    protected $allowedFields = ['waktu', 'narasi', 'jumlah', 'jenis', 'sisa', 'keterangan'];
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
     protected $createdField = '';
@@ -16,7 +16,7 @@ class PersekotModel extends Model{
 
     public function getPersekot(){
         $data = $this->builder()
-        ->select('persekot.id AS id, waktu, narasi, jumlah, jenis_persekot.nama as jenis, sisa')
+        ->select('persekot.id AS id, waktu, narasi, jumlah, jenis_persekot.nama as jenis, sisa, keterangan')
         ->join('jenis_persekot', 'persekot.jenis = jenis_persekot.id')
         ->get()->getResultArray();
         return $data;
@@ -25,7 +25,7 @@ class PersekotModel extends Model{
     public function memoPersekot($id){
         $data = $this->builder()
         ->select('persekot.id as id, jenis_persekot.id as idjenis, jenis_persekot.nama as namajenis,
-        narasi, waktu, jumlah, sisa')
+        narasi, waktu, jumlah, sisa, keterangan')
         ->join('jenis_persekot', 'persekot.jenis = jenis_persekot.id')
         ->where('persekot.id', $id)
         ->get()->getRowArray();

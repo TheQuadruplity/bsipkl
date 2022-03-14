@@ -18,6 +18,7 @@
                         <th>Jenis Persekot</th>
                         <th>Jumlah</th>
                         <th>Tersisa</th>
+                        <th>Keterangan</th>
                         <th>Form Memo Pengantar Persekot</th>
                     </tr>
                 </thead>
@@ -30,6 +31,7 @@
                         <td><?= esc($d['jenis']) ?></td>
                         <td class="text-right"><?= esc($d['jumlah']) ?></td>
                         <td class="text-right"><?= esc($d['sisa']) ?></td>
+                        <td><?= esc($d['keterangan']) ?></td>
                         <td class="text-center"><a href="<?= base_url()?>/posneraca/printmemo/<?= esc($d['id']) ?>" target="_blank" class="btn btn-primary btn-sm">Print</a></td>
                     </tr>
                     <?php endforeach ?>

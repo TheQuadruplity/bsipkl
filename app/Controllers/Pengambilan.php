@@ -20,7 +20,8 @@ class Pengambilan extends BaseController
             'narasi' => $this->request->getPost('narasi'), 
             'jenis' => $this->request->getPost('jenis'), 
             'jumlah' => $this->request->getPost('jumlah'), 
-            'sisa' => $this->request->getPost('jumlah')
+            'sisa' => $this->request->getPost('jumlah'),
+            'keterangan' => $this->request->getPost('keterangan')
         ];
 
         $model->insert($data);

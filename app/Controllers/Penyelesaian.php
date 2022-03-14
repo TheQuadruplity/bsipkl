@@ -30,7 +30,8 @@ class Penyelesaian extends BaseController
             'beban' => $this->request->getPost('beban'), 
             'jumlah' => $this->request->getPost('jumlah'), 
             'rekening' => $this->request->getPost('rekening'), 
-            'persekot' => $this->request->getPost('persekot')
+            'persekot' => $this->request->getPost('persekot'),
+            'keterangan' => $this->request->getPost('keterangan')
         ];
 
         $model->insert($data);
