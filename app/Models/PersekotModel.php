@@ -18,6 +18,7 @@ class PersekotModel extends Model{
         $data = $this->builder()
         ->select('persekot.id AS id, waktu, narasi, jumlah, jenis_persekot.nama as jenis, sisa, keterangan')
         ->join('jenis_persekot', 'persekot.jenis = jenis_persekot.id')
+        ->orderBy('waktu', 'DESC')
         ->get()->getResultArray();
         return $data;
     }
