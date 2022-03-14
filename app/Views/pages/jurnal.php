@@ -4,7 +4,7 @@
 
 <!-- Button trigger modal -->
 <label for="bulan">Bulan dan tahun</label>
-<input type="month" class="form-control" id="bulan">
+<input type="month" class="form-control mb-3" id="bulan">
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
