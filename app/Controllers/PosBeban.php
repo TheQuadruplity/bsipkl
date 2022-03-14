@@ -8,14 +8,13 @@ class PosBeban extends BaseController
 {
     public function index(){
         if(!authRedirect()) return redirect()->to(base_url('login'));
-        $db = \Config\Database::connect();
-        $builder = $db->table('penyelesaian');
-        $builder = $builder->join('beban', 'penyelesaian.beban=beban.id');
-        $builder = $builder->join('persekot', 'penyelesaian.persekot=persekot.id');
-        $builder = $builder->select('penyelesaian.waktu, penyelesaian.jumlah, beban, rekening, beban.nama as beban, persekot.narasi as persekot');
-        $builder = $builder->orderBy('penyelesaian.waktu', 'DESC');
-        $query = $builder->get();
-        $data = $query->getResultArray();
+        $model = new PenyelesaianModel();
+        $data = $model->builder()
+        ->join('beban', 'penyelesaian.beban=beban.id')
+        ->join('persekot', 'penyelesaian.persekot=persekot.id')
+        ->select('penyelesaian.waktu, penyelesaian.jumlah, beban, rekening, beban.nama as beban, persekot.narasi as persekot, penyelesaian.keterangan')
+        ->orderBy('penyelesaian.waktu', 'DESC')
+        ->get()->getResultArray();
         $jumlah = [];
         foreach($data as $d){
             array_push($jumlah, numfmt_format($this->currencyfmt, $d['jumlah']));
