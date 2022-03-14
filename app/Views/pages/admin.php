@@ -11,29 +11,47 @@
 <h1 class="h3 mb-2 text-gray-800">Admin</h1>
 <!--p class="mb-4">Berikut adalah database Jenis Persekot</p-->
 
-<form name="saveusername" action="">
-  <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" value="<?= $data['username'] ?>" required pattern="[A-Za-z0-9]*">
+<!-- <div class="container my-5"> -->
+  <div class="card my-5">
+    <form name="saveusername" action="">
+      <div class="card-header">Ubah Username</div>
+      <div class="card-body">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" value="<?= $data['username'] ?>" required pattern="[A-Za-z0-9]*">
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-primary" id="saveusername">Simpan</button>
+      </div>
+    </form>
   </div>
-  <button type="button" class="btn btn-primary" id="saveusername">Simpan</button>
-</form>
-<hr>
-<form name="savepassword" action="">
-  <div class="form-group">
-      <label for="newpassword">Password Baru</label>
-      <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="Masukkan Password Baru" required>
+
+  <div class="card my-5">
+    <form name="savepassword" action="">
+      <div class="card-header">Ubah Password</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="newpassword">Password Baru</label>
+            <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="Masukkan Password Baru" required>
+          </div>
+        <div class="form-group">
+          <label for="narasi">Konfirmasi Password</label>
+          <input type="password" class="form-control" id="konpassword" name="konpassword" placeholder="Masukkan Konfirmasi Password" required>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-primary" id="savepassword">Simpan</button>
+      </div>
+    </form>
   </div>
-  <div class="form-group">
-      <label for="narasi">Konfirmasi Password</label>
-      <input type="password" class="form-control" id="konpassword" name="konpassword" placeholder="Masukkan Konfirmasi Password" required>
-  </div>
-  <button type="button" class="btn btn-primary" id="savepassword">Simpan</button>
-  <hr>
+
+
   <div class="alert alert-info" role="alert">
       <strong>Anda akan diminta memasukkan <b>password saat ini</b> pada saat menyimpan perubahan akun</strong>
   </div>
-</form>
+<!-- </div> -->
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
