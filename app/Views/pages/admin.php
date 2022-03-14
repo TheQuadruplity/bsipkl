@@ -14,7 +14,7 @@
 <form name="saveusername" action="">
   <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" value="<?= $data['username'] ?>" required>
+      <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" value="<?= $data['username'] ?>" required pattern="[A-Za-z0-9]*">
   </div>
   <button type="button" class="btn btn-primary" id="saveusername">Simpan</button>
 </form>

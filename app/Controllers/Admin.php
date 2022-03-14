@@ -8,6 +8,7 @@ class Admin extends BaseController
 {
     public function index()
     {
+        $this->atrdr();
         $s = session();
         $model = new AdminModel();
         $data = $model->find()[0];
@@ -36,6 +37,9 @@ class Admin extends BaseController
                 $model->update(null,['password' => md5($this->request->getPost('password'))]);
                 $s->setFlashdata('msg', 'Password berhasil diubah!');
             }
+            $data = $model->find()[0];
+            $ses = base64_encode($data['username'].':'.$data['password']);
+                session()->set('auth', $ses);
             
             return redirect()->to(base_url('admin'));
         }

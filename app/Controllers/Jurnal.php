@@ -9,12 +9,14 @@ use DateTime;
 class Jurnal extends BaseController
 {
     public function index(){
+        $this->atrdr();
         $model = new JurnalModel();
         $this->page('jurnal', $model->getJurnal(date('Y-m')));
 
     }
 
     public function harian($tanggal){
+        $this->atrdr();
         $tgl = explode('-', $tanggal);
         $db = \Config\Database::connect();
         $sql = "(SELECT * FROM jurnal z

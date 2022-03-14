@@ -8,6 +8,7 @@ class JenisPersekot extends BaseController
 {
 
     public function index(){
+        $this->atrdr();
         $model = new JenisPersekotModel();
         $data = $model->findAll();
         $this->page('jenis_persekot', ['data' => $data]);

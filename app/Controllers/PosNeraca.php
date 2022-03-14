@@ -7,6 +7,7 @@ use App\Models\PersekotModel;
 class PosNeraca extends BaseController
 {
     public function index(){
+        $this->atrdr();
         $model = new PersekotModel();
         $data = $model->getPersekot();
         for($i = 0; $i < sizeof($data); $i++){
@@ -18,6 +19,7 @@ class PosNeraca extends BaseController
     }
 
     public function printMemo($id){
+        $this->atrdr();
         $model = new PersekotModel();
         $data = $model->memoPersekot($id);
         $reg = substr($data['id']+10000, 1).'/'.

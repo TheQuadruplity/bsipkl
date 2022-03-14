@@ -7,6 +7,7 @@ use App\Models\PenyelesaianModel;
 class PosBeban extends BaseController
 {
     public function index(){
+        $this->atrdr();
         $db = \Config\Database::connect();
         $builder = $db->table('penyelesaian');
         $builder = $builder->join('beban', 'penyelesaian.beban=beban.id');

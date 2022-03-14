@@ -8,6 +8,7 @@ use App\Models\PersekotModel;
 class Pengambilan extends BaseController
 {
     public function index(){
+        $this->atrdr();
         $model = new JenisPersekotModel();
         $data = $model->findAll();
         $this->page('pengambilan', ['jenis_persekot' => $data]);

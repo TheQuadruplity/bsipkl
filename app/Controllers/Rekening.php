@@ -7,6 +7,7 @@ use App\Models\RekeningModel;
 class Rekening extends BaseController
 {
     public function index(){
+        $this->atrdr();
         $model = new RekeningModel();
         $data = $model->findAll();
         $this->page('daftar_rekening', ['data' => $data]);

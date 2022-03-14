@@ -10,6 +10,7 @@ use App\Models\RekeningModel;
 class Penyelesaian extends BaseController
 {
     public function index(){
+        $this->atrdr();
         $persekotmodel = new PersekotModel();
         $bebanmodel = new BebanModel();
         $rekeningmodel = new RekeningModel();

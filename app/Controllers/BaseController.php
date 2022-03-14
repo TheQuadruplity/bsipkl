@@ -36,7 +36,7 @@ class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['authredirect'];
 
 
     /**
@@ -63,6 +63,7 @@ class BaseController extends Controller
     /**
      * Constructor.
      */
+
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         // Do Not Edit This Line
@@ -73,6 +74,7 @@ class BaseController extends Controller
         // E.g.: $this->session = \Config\Services::session();
 
         $this->currencyfmt = numfmt_create('ID_id', NumberFormatter::CURRENCY);
+        
     }
 
     /**
@@ -83,6 +85,10 @@ class BaseController extends Controller
         echo view('templates/header', ['data' => $this->sidebar, 'page' => get_called_class()]);
         echo view('pages/'.$page, $data);
         echo view('templates/footer');
+    }
+
+    protected function atrdr(){
+        if(!authRedirect()) return redirect()->to(base_url('login'));
     }
 
 }

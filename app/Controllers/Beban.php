@@ -8,6 +8,7 @@ use App\Models\PenyelesaianModel;
 class Beban extends BaseController
 {
     public function index(){
+        $this->atrdr();
         $model = new BebanModel();
         $data = $model->findAll();
         unset($data[0]);
@@ -44,6 +45,7 @@ class Beban extends BaseController
     }
 
     public function rekening($id){
+        $this->atrdr();
         $model = new PenyelesaianModel();
         $data = $model->builder()
         ->select('penyelesaian.waktu, penyelesaian.jumlah, rekening, persekot.narasi AS persekot')
