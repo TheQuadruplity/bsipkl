@@ -16,7 +16,7 @@
             <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>No.</th>
+                        <th style="width: 3%;">No.</th>
                         <th>Nama Persekot</th>
                         <th>Action</th>
                     </tr>
