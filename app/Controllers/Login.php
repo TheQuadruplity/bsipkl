@@ -19,7 +19,7 @@ class Login extends Controller
             $res = $model->find()[0];
             if($res['username'] == $_POST['username'] && $res['password'] == md5($_POST['password'])){
                 $ses = base64_encode($_POST['username'].':'.md5($_POST['password']));
-                session()->set('auth', $ses);
+                session()->setTempdata('auth', $ses);
                 
                 return redirect()->to(base_url());
             }

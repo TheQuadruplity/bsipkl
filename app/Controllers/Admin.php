@@ -8,7 +8,7 @@ class Admin extends BaseController
 {
     public function index()
     {
-        $this->atrdr();
+        if(!authRedirect()) return redirect()->to(base_url('login'));
         $s = session();
         $model = new AdminModel();
         $data = $model->find()[0];
@@ -39,7 +39,7 @@ class Admin extends BaseController
             }
             $data = $model->find()[0];
             $ses = base64_encode($data['username'].':'.$data['password']);
-                session()->set('auth', $ses);
+            session()->setTempdata('auth', $ses);
             
             return redirect()->to(base_url('admin'));
         }

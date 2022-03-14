@@ -6,9 +6,9 @@ function authRedirect(){
     $model = new AdminModel();
     $s = session();
 
-    if($s->get('auth')){
-        
-        $auth = base64_decode($s->get('auth'));
+    if($s->getTempdata('auth')){
+
+        $auth = base64_decode($s->getTempdata('auth'));
         $adata = explode(':', $auth, 2);
         $data = $model->find()[0];
         

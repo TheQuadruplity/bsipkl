@@ -74,7 +74,8 @@ class BaseController extends Controller
         // E.g.: $this->session = \Config\Services::session();
 
         $this->currencyfmt = numfmt_create('ID_id', NumberFormatter::CURRENCY);
-        
+
+        if(authRedirect()) session()->setTempdata('auth', session()->getTempdata('auth'));
     }
 
     /**
@@ -89,6 +90,8 @@ class BaseController extends Controller
 
     protected function atrdr(){
         if(!authRedirect()) return redirect()->to(base_url('login'));
+        else session()->setTempdata('auth', session()->getTempdata('auth'));
+        dd('aaa');
     }
 
 }

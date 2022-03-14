@@ -8,7 +8,7 @@ use App\Models\PersekotModel;
 class Pengambilan extends BaseController
 {
     public function index(){
-        $this->atrdr();
+        if(!authRedirect()) return redirect()->to(base_url('login'));
         $model = new JenisPersekotModel();
         $data = $model->findAll();
         $this->page('pengambilan', ['jenis_persekot' => $data]);

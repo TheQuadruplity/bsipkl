@@ -8,7 +8,7 @@ use App\Models\PenyelesaianModel;
 class Beban extends BaseController
 {
     public function index(){
-        $this->atrdr();
+        if(!authRedirect()) return redirect()->to(base_url('login'));
         $model = new BebanModel();
         $data = $model->findAll();
         unset($data[0]);
@@ -45,7 +45,7 @@ class Beban extends BaseController
     }
 
     public function rekening($id){
-        $this->atrdr();
+        if(!authRedirect()) return redirect()->to(base_url('login'));
         $model = new PenyelesaianModel();
         $data = $model->builder()
         ->select('penyelesaian.waktu, penyelesaian.jumlah, rekening, persekot.narasi AS persekot')
