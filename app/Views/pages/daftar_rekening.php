@@ -3,9 +3,8 @@
 <p class="mb-4">Berikut adalah database rekening</p>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
-  Tambah Data
-</button>
+<button type="button" class="btn btn-primary btn-icon-split mb-3" data-toggle="modal" data-target="#exampleModal" ><span class="icon text-white-50">
+  <i class="fas fa-plus-circle"></i></span><span class="text">Tambah Data</span></button>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -29,7 +28,10 @@
                         <td><?= esc($i+1) ?></td>
                         <td><?= esc($d['nomor']) ?></td>
                         <td><?= esc($d['nama']) ?></td>
-                        <td class="text-center"><a href="<?= base_url()?>/rekening/delete/<?= esc($d['nomor']) ?>" class="btn btn-danger btn-sm">Hapus</a></td>
+                        <td class="text-center">
+                        <a href="<?= base_url('rekening/delete/'.$d['nomor'])?>" class="btn btn-danger btn-icon-split btn-sm"><span class="icon text-white-50">
+                              <i class="fas fa-trash"></i></span><span class="text">Hapus</span></a>
+                        </td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>

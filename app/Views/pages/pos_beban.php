@@ -18,6 +18,7 @@
                         <th>Persekot</th>
                         <th>Rekening</th>
                         <th>Jumlah</th>
+                        <th>Keterangan</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,7 @@
                         <td><?= esc($d['persekot']) ?></td>
                         <td><?= esc($d['rekening']) ?></td>
                         <td class="text-right"><?= esc($jumlah[$i]) ?></td>
+                        <td><?= esc($d['keterangan']) ?></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>

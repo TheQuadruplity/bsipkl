@@ -2,9 +2,8 @@
 <h1 class="h3 mb-2 text-gray-800">Daftar Beban</h1>
 <p class="mb-4">Berikut adalah database beban</p>
 
-<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
-  Tambah Data
-</button>
+<button type="button" class="btn btn-primary btn-icon-split mb-3" data-toggle="modal" data-target="#exampleModal" ><span class="icon text-white-50">
+  <i class="fas fa-plus-circle"></i></span><span class="text">Tambah Data</span></button>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -28,10 +27,15 @@
                         <td><?= esc($i) ?></td>
                         <td><?= esc($d['nama']) ?></td>
                         <td class="text-center">
-                            <a href="<?= base_url()?>/beban/delete/<?= esc($d['id']) ?>" class="btn btn-danger btn-sm">Hapus</a>
-                            <button type="button" class="btn btn-warning edit btn-sm" data-toggle="modal" data-target="#editModal" data-id='<?= esc($d['id']) ?>' data-nama='<?= esc($d['nama']) ?>'>Edit</button>
+                            <a href="<?= base_url('beban/delete/'.$d['id'])?>" class="btn btn-danger btn-icon-split btn-sm"><span class="icon text-white-50">
+                              <i class="fas fa-trash"></i></span><span class="text">Hapus</span></a>
+                            <button type="button" class="btn btn-warning btn-icon-split btn-sm edit" data-toggle="modal" data-target="#editModal" data-id='<?= esc($d['id']) ?>' 
+                              data-nama='<?= esc($d['nama']) ?>'><span class="icon text-white-50">
+                              <i class="fas fa-pencil-alt"></i></span><span class="text">Edit</span></button>
                         </td>
-                        <td class="text-center"><a href="<?= base_url()?>/beban/rekening/<?= esc($d['id']) ?>" class="btn btn-primary btn-sm">Lihat</a></td>
+                        
+                        <td class="text-center"><a href="<?= base_url('beban/rekening/'.$d['id'])?>" class="btn btn-primary btn-icon-split btn-sm"><span class="icon text-white-50">
+                              <i class="fas fa-scroll"></i></span><span class="text">Lihat</span></a></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>

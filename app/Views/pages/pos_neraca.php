@@ -32,7 +32,8 @@
                         <td class="text-right"><?= esc($d['jumlah']) ?></td>
                         <td class="text-right"><?= esc($d['sisa']) ?></td>
                         <td><?= esc($d['keterangan']) ?></td>
-                        <td class="text-center"><a href="<?= base_url()?>/posneraca/printmemo/<?= esc($d['id']) ?>" target="_blank" class="btn btn-primary btn-sm">Print</a></td>
+                        <td class="text-center"><a href="<?= base_url('posneraca/printmemo/'.$d['id'])?>" class="btn btn-primary btn-icon-split btn-sm" target="_blank"><span class="icon text-white-50">
+                              <i class="fas fa-print"></i></span><span class="text">Print</span></a></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
