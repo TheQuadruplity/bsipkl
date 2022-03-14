@@ -29,8 +29,9 @@
                         <td><?= esc($d['nomor']) ?></td>
                         <td><?= esc($d['nama']) ?></td>
                         <td class="text-center">
-                        <a href="<?= base_url('rekening/delete/'.$d['nomor'])?>" class="btn btn-danger btn-icon-split btn-sm"><span class="icon text-white-50">
-                              <i class="fas fa-trash"></i></span><span class="text">Hapus</span></a>
+
+                        <button type="button" class="btn btn-danger btn-icon-split btn-sm delete" data-toggle="modal" data-target="#deleteModal" value="<?=esc($d['nomor'])?>"><span class="icon text-white-50">
+                              <i class="fas fa-trash"></i></span><span class="text">Hapus</span></button>
                         </td>
                     </tr>
                     <?php endforeach ?>
@@ -70,3 +71,25 @@
     </div>
   </div>
 </div>
+
+    <!-- Mudal Hapus-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Hapus?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Apakah anda yakin  ingin menghapus</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                    <a id="deleteloc" class="btn btn-danger" href="">Hapus</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>$('.delete').click(function(){$('#deleteloc').attr('href', '<?= base_url('rekening/delete')?>/'+$(this).val())})</script>
