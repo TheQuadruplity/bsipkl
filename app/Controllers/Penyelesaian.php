@@ -16,7 +16,7 @@ class Penyelesaian extends BaseController
         $rekeningmodel = new RekeningModel();
         $persekot = $persekotmodel->builder()->
         select('id, narasi')->
-        where('sisa < 0')->
+        where('sisa > 0')->
         get()->getResultArray();
         $beban = $bebanmodel->findAll();
         $rekening = $rekeningmodel->findAll();
