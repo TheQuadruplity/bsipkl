@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body style="background-color: #106d68;">
 
     <div class="container">
 
@@ -34,8 +34,9 @@
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="row" >
+                            
+                        <img class="col-lg-6 d-none d-lg-block" src="<?= base_url()?>/logo-bsi.png" style="background-color: #0ca49d;"></img>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
