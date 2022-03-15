@@ -77,7 +77,7 @@ class BaseController extends Controller
 
         if(authRedirect()) session()->setTempdata('auth', session()->getTempdata('auth'));
         else{
-            session()->setFlashdata('msg', 'Sesi anda telah habis, silakan login');
+            if(uri_string() != '/') session()->setFlashdata('msg', 'Sesi anda telah habis, silakan login');
         }
     }
 
