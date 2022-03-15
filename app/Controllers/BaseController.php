@@ -44,6 +44,14 @@ class BaseController extends Controller
      */
     protected $currencyfmt;
 
+
+    /**
+     * Pengaturan Sidebar:
+     *  [] -> Garis Pemisah
+     *  ['nama'] -> Sidebar Header
+     *  ['controller', 'judul'] -> sidebar navigasi
+     *  ['controller', 'judul', 'ikon'] -> sidebar navigasi dengan ikon
+     */
     protected $sidebar = [
         ['jurnal', 'Jurnal', 'fas fa-book'],
         ['posneraca', 'Pos Neraca', 'fas fa-balance-scale'],
