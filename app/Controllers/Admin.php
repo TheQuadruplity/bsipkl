@@ -22,6 +22,9 @@ class Admin extends BaseController
             if($data) $this->response->setStatusCode(202);
             else $this->response->setStatusCode(403);
         }
+        else{
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
     }
 
     public function update()
@@ -40,8 +43,8 @@ class Admin extends BaseController
             $data = $model->find()[0];
             $ses = base64_encode($data['username'].':'.$data['password']);
             session()->setTempdata('auth', $ses);
-            
-            return redirect()->to(base_url('admin'));
         }
+
+        return redirect()->to(base_url('admin'));
     }
 }

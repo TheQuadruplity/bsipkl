@@ -51,5 +51,8 @@ class Jurnal extends BaseController
             $data = $model->getJurnal(date($bulan));
             echo view('minis/jurnal', $data);
         }
+        else{
+            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+        }
     }
 }
