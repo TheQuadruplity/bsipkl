@@ -8,7 +8,6 @@ use App\Models\PenyelesaianModel;
 class Beban extends BaseController
 {
     public function index(){
-        if(!authRedirect()) return redirect()->to(base_url('login'));
         $model = new BebanModel();
         $data = $model->findAll();
         unset($data[0]);

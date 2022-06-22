@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Models\AdminModel;
 use CodeIgniter\Config\BaseService;
 
 /**
@@ -29,4 +30,25 @@ class Services extends BaseService
      *     return new \CodeIgniter\Example();
      * }
      */
+
+    public static function isLogged(){
+
+        $sess_id = session('auth_id');
+        if($sess_id){
+            $model = new AdminModel();
+            $res = $model->findAll()[0];
+            if($sess_id == $res['session_id'] && time() < strtotime($res['session_expire'])){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+
+        
+    }
+
 }

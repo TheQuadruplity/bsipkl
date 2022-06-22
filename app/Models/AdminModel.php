@@ -8,9 +8,9 @@ class AdminModel extends Model{
     protected $table = 'admin';
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
-    protected $allowedFields = ['username', 'password'];
+    protected $allowedFields = ['username', 'password', 'session_id', 'session_expire'];
     protected $useTimestamps = true;
-    protected $dateFormat = 'date';
+    protected $dateFormat = 'datetime';
     protected $createdField = '';
     protected $updatedField = '';
 }

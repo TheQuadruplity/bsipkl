@@ -7,7 +7,6 @@ use App\Models\RekeningModel;
 class Rekening extends BaseController
 {
     public function index(){
-        if(!authRedirect()) return redirect()->to(base_url('login'));
         $model = new RekeningModel();
         $data = $model->findAll();
         $this->page('daftar_rekening', ['data' => $data]);

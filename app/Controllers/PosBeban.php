@@ -7,12 +7,11 @@ use App\Models\PenyelesaianModel;
 class PosBeban extends BaseController
 {
     public function index(){
-        if(!authRedirect()) return redirect()->to(base_url('login'));
         $model = new PenyelesaianModel();
         $data = $model->builder()
         ->join('beban', 'penyelesaian.beban=beban.id')
         ->join('persekot', 'penyelesaian.persekot=persekot.id')
-        ->select('penyelesaian.waktu, penyelesaian.jumlah, beban, rekening, beban.nama as beban, persekot.narasi as persekot, penyelesaian.keterangan')
+        ->select('penyelesaian.waktu, penyelesaian.jumlah, beban, penyelesaian.rekening, beban.nama as beban, persekot.narasi as persekot, penyelesaian.keterangan')
         ->orderBy('penyelesaian.waktu', 'DESC')
         ->get()->getResultArray();
         $jumlah = [];

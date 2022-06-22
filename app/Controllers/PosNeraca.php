@@ -7,7 +7,6 @@ use App\Models\PersekotModel;
 class PosNeraca extends BaseController
 {
     public function index(){
-        if(!authRedirect()) return redirect()->to(base_url('login'));
         $model = new PersekotModel();
         $data = $model->getPersekot();
         for($i = 0; $i < sizeof($data); $i++){
@@ -19,7 +18,6 @@ class PosNeraca extends BaseController
     }
 
     public function printMemo($id){
-        if(!authRedirect()) return redirect()->to(base_url('login'));
         $model = new PersekotModel();
         $data = $model->memoPersekot($id);
         $reg = substr($data['id']+10000, 1).'/'.

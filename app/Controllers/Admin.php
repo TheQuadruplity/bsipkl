@@ -8,7 +8,6 @@ class Admin extends BaseController
 {
     public function index()
     {
-        if(!authRedirect()) return redirect()->to(base_url('login'));
         $s = session();
         $model = new AdminModel();
         $data = $model->find()[0];

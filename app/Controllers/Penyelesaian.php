@@ -10,7 +10,6 @@ use App\Models\RekeningModel;
 class Penyelesaian extends BaseController
 {
     public function index(){
-        if(!authRedirect()) return redirect()->to(base_url('login'));
         $persekotmodel = new PersekotModel();
         $bebanmodel = new BebanModel();
         $rekeningmodel = new RekeningModel();

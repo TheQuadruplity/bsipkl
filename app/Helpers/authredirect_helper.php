@@ -5,7 +5,6 @@ use App\Models\AdminModel;
 function authRedirect(){
     $model = new AdminModel();
     $s = session();
-
     if($s->getTempdata('auth')){
 
         $auth = base64_decode($s->getTempdata('auth'));
