@@ -10,8 +10,7 @@ class Jurnal extends BaseController
 {
     public function index(){
         $model = new JurnalModel();
-        $this->page('jurnal', $model->getJurnal(date('Y-m')));
-
+        $this->page('jurnal', $model->getJurnal(date('Y-m-d'), date('Y-m-d')));
     }
 
     public function harian($tanggal){
@@ -43,10 +42,10 @@ class Jurnal extends BaseController
 
     }
 
-    public function jurnal($bulan){
+    public function jurnal($awal, $akhir){
         if($this->request->isAJAX()){
             $model = new JurnalModel();
-            $data = $model->getJurnal(date($bulan));
+            $data = $model->getJurnal($awal, $akhir);
             echo view('minis/jurnal', $data);
         }
         else{

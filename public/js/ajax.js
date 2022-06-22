@@ -10,6 +10,18 @@ $('#bulan').change(function(){
     });
 })
 
+$('.tanggal').change(function(){
+    $('#jurnal').html(''),
+    $.ajax({
+        type: "GET",
+        url: "jurnal/jurnal/"+$('#awal').val()+"/"+$('#akhir').val(),
+        dataType: "html",
+        success: function (response) {
+            $('#jurnal').html(response)
+        }
+    });
+})
+
 $('#confirm').click(function (e) { 
     e.preventDefault();
     console.log("admin/validatepass/"+$('#oldpassword').val());

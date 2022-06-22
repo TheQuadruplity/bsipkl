@@ -3,8 +3,19 @@
 <p class="mb-4">Berikut adalah jurnal untuk setiap bulan</p>
 
 <!-- Button trigger modal -->
-<label for="bulan">Bulan dan tahun</label>
-<input type="month" class="form-control mb-3" id="bulan">
+<div class="row">
+    <div class="col">
+        <label for="awal">Tanggal Awal</label>
+        <input type="date" class="form-control mb-3 tanggal" id="awal" value="<?= date('Y-m-d')?>">
+    </div>
+    <div class="col">
+        <label for="awal">Tanggal Akhir</label>
+        <input type="date" class="form-control mb-3 tanggal" id="akhir" value="<?= date('Y-m-d')?>">
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary btn-icon-split mb-3"><span class="icon text-white-50">
+  <i class="fas fa-print"></i></span><span class="text">Cetak</span></button>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -17,13 +28,15 @@
                 <thead>
                     <tr>
                         <th style="width: 3%;">No.</th>
-                        <th>Tanggal</th>
+                        <th>Waktu</th>
+                        <th>Keterangan</th>
+                        <th>Debit</th>
+                        <th>Kredit</th>
                         <th>Saldo</th>
-                        <th>Persekot Harian</th>
                     </tr>
                 </thead>
                 <tbody id='jurnal'>
-                    <?= view('minis/jurnal', ['data' => $data, 'month' => $month, 'year' => $year]) ?>
+                    <?= view('minis/jurnal', ['data' => $data]) ?>
                 </tbody>
             </table>
         </div>

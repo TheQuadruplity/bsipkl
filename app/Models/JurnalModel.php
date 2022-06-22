@@ -17,7 +17,7 @@ class JurnalModel extends Model{
     protected $createdField = '';
     protected $updatedField = '';
 
-    public function getJurnal($bulan){
+    public function getJurnalbulanan($bulan){
         $currencyfmt = numfmt_create('ID_id', NumberFormatter::CURRENCY);
         $tgl = explode('-', $bulan);
         $db = \Config\Database::connect();
@@ -64,6 +64,25 @@ class JurnalModel extends Model{
         unset($daydata[0]);
         
         $data = ['data' => $daydata, 'month' => $month, 'year' => $year];
+        return $data;
+    }
+
+    public function getJurnal($awal, $akhir){
+        $currencyfmt = numfmt_create('ID_id', NumberFormatter::CURRENCY);
+        $db = \Config\Database::connect();
+
+        $q = $db->query("CALL get_jurnal(DATE('$awal'), DATE('$akhir'))");
+        $res = $q->getResultArray();
+        foreach($res as $i => $d){
+            $deb = $res[$i]['debit'];
+            $kre = $res[$i]['kredit'];
+
+            $res[$i]['debit'] = $deb == null? '-': numfmt_format($currencyfmt, $deb);
+            $res[$i]['kredit'] = $kre == null? '-': numfmt_format($currencyfmt, $kre);
+            $res[$i]['saldo'] = numfmt_format($currencyfmt, $res[$i]['saldo']);
+        }
+        
+        $data = ['data' => $res];
         return $data;
     }
 }
