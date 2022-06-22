@@ -82,11 +82,6 @@ class BaseController extends Controller
         // E.g.: $this->session = \Config\Services::session();
 
         $this->currencyfmt = numfmt_create('ID_id', NumberFormatter::CURRENCY);
-
-        if(authRedirect()) session()->setTempdata('auth', session()->getTempdata('auth'));
-        else{
-            if(uri_string() != '/') session()->setFlashdata('msg', 'Sesi anda telah habis, silakan login');
-        }
     }
 
     /**

@@ -17,6 +17,7 @@ class LoginFilter implements FilterInterface
 
     public function before(RequestInterface $request, $arguments = null)
     {
+
         $islog = service('isLogged');
         if(str_starts_with($request->getServer('REQUEST_URI'), '/login')){
             if(!str_starts_with($request->getServer('REQUEST_URI'), '/login/logout')){

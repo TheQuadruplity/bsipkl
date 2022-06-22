@@ -46,6 +46,21 @@
     </form>
   </div>
 
+  <div class="card my-5">
+    <form name="saveaosm" action="">
+      <div class="card-header">Ubah PJ AOSM</div>
+      <div class="card-body">
+        <div class="form-group">
+            <label for="aosm">PJ AOSM</label>
+            <input type="text" class="form-control" id="aosm" name="aosm" placeholder="Masukkan PJ AOSM" value="<?= $data['pj_aosm'] ?>" required>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-primary" id="saveaosm">Simpan</button>
+      </div>
+    </form>
+  </div>
+
 
   <div class="alert alert-info" role="alert">
       <strong>Anda akan diminta memasukkan <b>password saat ini</b> pada saat menyimpan perubahan akun</strong>
@@ -101,6 +116,14 @@
     if(document.savepassword.reportValidity()){
       $("#update").data("key", "password");
       $("#update").data("value", $("#newpassword").val());
+      $("#exampleModal").modal("show");
+    }
+  })
+
+  $("#saveaosm").click(function(){
+    if(document.saveaosm.reportValidity()){
+      $("#update").data("key", "aosm");
+      $("#update").data("value", $("#aosm").val());
       $("#exampleModal").modal("show");
     }
   })
