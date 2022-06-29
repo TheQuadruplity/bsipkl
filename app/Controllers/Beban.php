@@ -10,6 +10,7 @@ class Beban extends BaseController
     public function index(){
         $model = new BebanModel();
         $data = $model->findAll();
+        
         unset($data[0]);
         $this->page('daftar_beban', ['data' => $data]);
     }
@@ -18,7 +19,8 @@ class Beban extends BaseController
         if($this->request->getMethod() == 'post'){
             $model = new BebanModel();
             $model->save([
-                'nama' => $this->request->getPost('nama')
+                'nama' => $this->request->getPost('nama'),
+                'rekening' => $this->request->getPost('rek')
             ]);
         }
 
@@ -36,7 +38,8 @@ class Beban extends BaseController
         if($this->request->getMethod() == 'post'){
             $model = new BebanModel();
             $model->update($this->request->getPost('id'), [
-                'nama' => $this->request->getPost('nama')
+                'nama' => $this->request->getPost('nama'),
+                'rekening' => $this->request->getPost('rek')
             ]);
         }
 
@@ -44,12 +47,12 @@ class Beban extends BaseController
     }
 
     public function rekening($id){
-        if(!authRedirect()) return redirect()->to(base_url('login'));
         $model = new PenyelesaianModel();
         $data = $model->builder()
         ->select('penyelesaian.waktu, penyelesaian.jumlah, rekening, persekot.narasi AS persekot')
         ->join('persekot', 'penyelesaian.persekot = persekot.id')
         ->where('beban', $id)
+        ->where('YEAR(penyelesaian.waktu) =', $this->yearnow)
         ->get()->getResultArray();
         $sum = 0;
         foreach($data as $i => $d){
