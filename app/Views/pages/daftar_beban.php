@@ -17,26 +17,33 @@
                     <tr>
                         <th style="width: 3%;">No.</th>
                         <th>Nama Beban</th>
-                        <th>Action</th>
                         <th>Rekening Beban</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($data as $i => $d): ?>
                     <tr>
-                        <td><?= esc($i) ?></td>
-                        <td><?= esc($d['nama']) ?></td>
-                        <td class="text-center">
+                      <td><?= esc($i) ?></td>
+                      <td><?= esc($d['nama']) ?></td>
+                      <td style="width:30%">
+                        <div class="row">
+                          <div class="col">
+                            <?= esc($d['rekening']) ?>
+                          </div>
+                          <div class="col text-right">
+                            <a href="<?= base_url('beban/rekening/'.$d['id'])?>" class="btn btn-primary btn-icon-split btn-sm"><span class="icon text-white-50"><i class="fas fa-scroll"></i></span><span class="text">Lihat</span></a>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="text-center" style="width:20%">
 
-                            <button type="button" class="btn btn-danger btn-icon-split btn-sm delete" data-toggle="modal" data-target="#deleteModal" value="<?=esc($d['id'])?>"><span class="icon text-white-50">
-                              <i class="fas fa-trash"></i></span><span class="text">Hapus</span></button>
-                            <button type="button" class="btn btn-warning btn-icon-split btn-sm edit" data-toggle="modal" data-target="#editModal" data-id='<?= esc($d['id']) ?>' 
-                              data-nama='<?= esc($d['nama']) ?>'><span class="icon text-white-50">
-                              <i class="fas fa-pencil-alt"></i></span><span class="text">Edit</span></button>
-                        </td>
-                        
-                        <td class="text-center"><a href="<?= base_url('beban/rekening/'.$d['id'])?>" class="btn btn-primary btn-icon-split btn-sm"><span class="icon text-white-50">
-                              <i class="fas fa-scroll"></i></span><span class="text">Lihat</span></a></td>
+                          <button type="button" class="btn btn-danger btn-icon-split btn-sm delete" data-toggle="modal" data-target="#deleteModal" value="<?=esc($d['id'])?>"><span class="icon text-white-50">
+                            <i class="fas fa-trash"></i></span><span class="text">Hapus</span></button>
+                          <button type="button" class="btn btn-warning btn-icon-split btn-sm edit" data-toggle="modal" data-target="#editModal" data-id='<?= esc($d['id']) ?>' 
+                            data-nama='<?= esc($d['nama']) ?>' data-rek='<?= esc($d['rekening']) ?>'><span class="icon text-white-50">
+                            <i class="fas fa-pencil-alt"></i></span><span class="text">Edit</span></button>
+                      </td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
@@ -50,7 +57,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Beban</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -60,6 +67,8 @@
         <div class="form-group">
             <label for="nama">Nama Beban</label>
             <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama beban" required>
+            <label for="rek">Rekening Beban</label>
+            <input type="text" class="form-control" id="rek" name="rek" placeholder="Masukkan nama beban" required>
         </div>
       </div>
       <div class="modal-footer">
@@ -76,7 +85,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Beban</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -85,8 +94,10 @@
       <form action="<?= base_url() ?>/beban/update" method="POST">
         <div class="form-group">
             <input type="hidden" name="id" id="editid" value="">
-            <label for="nama">Nama Beban</label>
+            <label for="editnama">Nama Beban</label>
             <input type="text" class="form-control" id="editnama" name="nama" placeholder="Masukkan nama beban" required>
+            <label for="editrek">Rekening Beban</label>
+            <input type="text" class="form-control" id="editrek" name="rek" placeholder="Masukkan nama beban" required>
         </div>
       </div>
       <div class="modal-footer">
@@ -119,5 +130,5 @@
         </div>
     </div>
 
-<script>$('.edit').click(function (e){$('#editnama').val(this.dataset['nama']);$('#editid').val(this.dataset['id']);});</script>
+<script>$('.edit').click(function (e){$('#editnama').val(this.dataset['nama']);$('#editrek').val(this.dataset['rek']);$('#editid').val(this.dataset['id']);});</script>
 <script>$('.delete').click(function(){$('#deleteloc').attr('href', '<?= base_url('beban/delete')?>/'+$(this).val())})</script>
