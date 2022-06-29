@@ -25,16 +25,24 @@ class Penyelesaian extends BaseController
 
     public function save(){
         $model = new PenyelesaianModel();
-        $data = [
-            'beban' => $this->request->getPost('beban'), 
-            'jumlah' => $this->request->getPost('jumlah'), 
-            'rekening' => $this->request->getPost('rekening'), 
-            'persekot' => $this->request->getPost('persekot'),
-            'keterangan' => $this->request->getPost('keterangan')
-        ];
 
-        $model->insert($data);
+        $ins = [];
+        foreach($this->request->getPost('data') as $d){
+            $ob = [
+                'beban' => $d['beban'], 
+                'jumlah' => $d['jumlah'], 
+                'persekot' => $d['persekot'], 
+                'rekening' => $d['rekening'], 
+                'keterangan' => $d['keterangan']
+            ];
+            array_push($ins, $ob);
+        }
+        
+        //$model->insert($this->request->getPost('data'));
+        $model->insertBatch($this->request->getPost('data'));
+    }
 
-        return redirect()->to(base_url().'/posbeban');
+    public function submit(){
+        $this->page('penyelesaian_submit', ['data' => $this->request->getPost('successdata')]);
     }
 }
