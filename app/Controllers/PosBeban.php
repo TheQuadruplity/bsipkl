@@ -12,6 +12,7 @@ class PosBeban extends BaseController
         ->join('beban', 'penyelesaian.beban=beban.id')
         ->join('persekot', 'penyelesaian.persekot=persekot.id')
         ->select('penyelesaian.waktu, penyelesaian.jumlah, beban, penyelesaian.rekening, beban.nama as beban, persekot.narasi as persekot, penyelesaian.keterangan')
+        ->where('YEAR(penyelesaian.waktu) =', $this->yearnow)
         ->orderBy('penyelesaian.waktu', 'DESC')
         ->get()->getResultArray();
         $jumlah = [];

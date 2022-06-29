@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\AdminModel;
 use App\Models\PersekotModel;
 
 class PosNeraca extends BaseController
@@ -19,12 +20,14 @@ class PosNeraca extends BaseController
 
     public function printMemo($id){
         $model = new PersekotModel();
+        $mans = new AdminModel();
+        $mans = $mans->builder()->select('area_manager, pj_aosm')->get()->getRowArray();
         $data = $model->memoPersekot($id);
+        $data['jumlah'] = numfmt_format($this->currencyfmt, $data['jumlah']);
         $reg = substr($data['id']+10000, 1).'/'.
             substr($data['idjenis']+100, 1).'/'.
             date('m-d', strtotime($data['waktu'])).'/'.
             date('Y', strtotime($data['waktu']));
-        echo view('prints/memo_persekot', ['data' => $data, 'reg' => $reg]);
-        
+        echo view('prints/memo_persekot', ['data' => $data, 'reg' => $reg, 'now' => date('d M Y'), 'man' => $mans]);
     }
 }

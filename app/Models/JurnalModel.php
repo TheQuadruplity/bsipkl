@@ -82,7 +82,6 @@ class JurnalModel extends Model{
             $res[$i]['saldo'] = numfmt_format($currencyfmt, $res[$i]['saldo']);
         }
         
-        $data = ['data' => $res];
-        return $data;
+        return $res;
     }
 }

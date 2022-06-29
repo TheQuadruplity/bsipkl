@@ -6,11 +6,11 @@
 <div class="row">
     <div class="col">
         <label for="awal">Tanggal Awal</label>
-        <input type="date" class="form-control mb-3 tanggal" id="awal" value="<?= date('Y-m-d')?>">
+        <input type="date" class="form-control mb-3 tanggal" id="awal" min='<?=$datemin?>' max='<?=$datemax?>'  value="<?= $now?>">
     </div>
     <div class="col">
         <label for="awal">Tanggal Akhir</label>
-        <input type="date" class="form-control mb-3 tanggal" id="akhir" value="<?= date('Y-m-d')?>">
+        <input type="date" class="form-control mb-3 tanggal" id="akhir" min='<?=$datemin?>' max='<?=$datemax?>' value="<?= $now?>">
     </div>
 </div>
 

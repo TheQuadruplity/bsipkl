@@ -10,7 +10,12 @@ class Jurnal extends BaseController
 {
     public function index(){
         $model = new JurnalModel();
-        $this->page('jurnal', $model->getJurnal(date('Y-m-d'), date('Y-m-d')));
+        $thisyear = $this->yearnow==date('Y');
+        $datemin = $this->yearnow.'-01-01';
+        $datemax = $thisyear?date('Y-m-d'):$this->yearnow.'-12-31';
+
+        $data = $thisyear?$model->getJurnal(date('Y-m-d'),date('Y-m-d')):$model->getJurnal($datemax,$datemax);
+        $this->page('jurnal', ['datemin' => $datemin, 'datemax' => $datemax, 'now' => $thisyear?date('Y-m-d'):$datemax, 'data'=>$data]);
     }
 
     public function harian($tanggal){
@@ -45,7 +50,7 @@ class Jurnal extends BaseController
     public function jurnal($awal, $akhir){
         if($this->request->isAJAX()){
             $model = new JurnalModel();
-            $data = $model->getJurnal($awal, $akhir);
+            $data['data'] = $model->getJurnal($awal, $akhir);
             echo view('minis/jurnal', $data);
         }
         else{
