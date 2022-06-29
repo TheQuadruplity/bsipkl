@@ -11,7 +11,11 @@ class Admin extends BaseController
         $s = session();
         $model = new AdminModel();
         $data = $model->find()[0];
-        $this->page('admin', ['data' => $data, 'msg' => $s->getFlashdata('msg')]);
+        $year = date('Y');
+        $loweryear = 2001;
+        $ys = [];
+        while($year >= $loweryear) array_push($ys, $year--);
+        $this->page('admin', ['data' => $data, 'msg' => $s->getFlashdata('msg'), 'years' => $ys, 'year' => session()->get('ann')]);
     }
 
     public function validatePass($pass = ""){
@@ -39,12 +43,19 @@ class Admin extends BaseController
                 $model->update(null,['password' => md5($this->request->getPost('password'))]);
                 $s->setFlashdata('msg', 'Password berhasil diubah!');
             }
-            else if($this->request->getPost('aosm')){
-                $model->update(null,['pj_aosm' => $this->request->getPost('aosm')]);
-                $s->setFlashdata('msg', 'PJ AOSM berhasil diubah!');
+            else if($this->request->getPost('manager')){
+                
+                $manager = explode("\t", $this->request->getPost('manager'));
+                $model->update(null,['pj_aosm' => $manager[1], 'area_manager' => $manager[0]]);
+                $s->setFlashdata('msg', 'Manager berhasil diubah!');
             }
         }
 
         return redirect()->to(base_url('admin'));
+    }
+    
+    public static function Annual($year)
+    {
+        session()->set('ann', $year);
     }
 }

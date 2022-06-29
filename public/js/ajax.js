@@ -24,7 +24,6 @@ $('.tanggal').change(function(){
 
 $('#confirm').click(function (e) { 
     e.preventDefault();
-    console.log("admin/validatepass/"+$('#oldpassword').val());
     $.ajax({
         type: "POST",
         url: "admin/validatepass/"+$('#oldpassword').val(),

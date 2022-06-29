@@ -8,7 +8,25 @@
 </div>
 <?php endif ?>
 
-<h1 class="h3 mb-2 text-gray-800">Admin</h1>
+<div class="row">
+  <div class="col">
+    <h1 class="h3 mb-2 text-gray-800">Admin</h1>
+  </div>
+  <div class="col-sm-3 text-right">
+    <div class="row">
+      <div class="col">Pilih tahun kerja:</div>
+      <div class="col-4">
+        <select id="tahun" class="form-control form-control-sm">
+          <?php foreach($years as $y): ?>
+            <option value="<?=esc($y)?>" <?= $y == $year?'selected':'' ?>><?=esc($y)?></option>
+          <?php endforeach ?>
+        </select>
+      </div>
+    </div>  
+  </div>
+</div>
+
+
 <!--p class="mb-4">Berikut adalah database Jenis Persekot</p-->
 
 <!-- <div class="container my-5"> -->
@@ -47,16 +65,18 @@
   </div>
 
   <div class="card my-5">
-    <form name="saveaosm" action="">
-      <div class="card-header">Ubah PJ AOSM</div>
+    <form name="savemanager" action="">
+      <div class="card-header">Manager</div>
       <div class="card-body">
         <div class="form-group">
-            <label for="aosm">PJ AOSM</label>
-            <input type="text" class="form-control" id="aosm" name="aosm" placeholder="Masukkan PJ AOSM" value="<?= $data['pj_aosm'] ?>" required>
+          <label for="area">Area Manager</label>
+          <input type="text" class="form-control" id="area" name="area" placeholder="Masukkan Area Manager" value="<?= $data['area_manager'] ?>" required>
+          <label for="aosm">PJ AOSM</label>
+          <input type="text" class="form-control" id="aosm" name="aosm" placeholder="Masukkan PJ AOSM" value="<?= $data['pj_aosm'] ?>" required>
         </div>
       </div>
       <div class="card-footer">
-        <button type="button" class="btn btn-primary" id="saveaosm">Simpan</button>
+        <button type="button" class="btn btn-primary" id="savemanager">Simpan</button>
       </div>
     </form>
   </div>
@@ -120,11 +140,15 @@
     }
   })
 
-  $("#saveaosm").click(function(){
-    if(document.saveaosm.reportValidity()){
-      $("#update").data("key", "aosm");
-      $("#update").data("value", $("#aosm").val());
+  $("#savemanager").click(function(){
+    if(document.savemanager.reportValidity()){
+      $("#update").data("key", "manager");
+      $("#update").data("value", $("#area").val() +'\t'+ $("#aosm").val());
       $("#exampleModal").modal("show");
     }
+  })
+
+  $('#tahun').change(function(){
+    $.post('<?= base_url() ?>/admin/annual/'+this.value);
   })
 </script>
