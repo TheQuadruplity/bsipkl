@@ -33,7 +33,7 @@ class Services extends BaseService
 
     public static function isLogged(){
 
-        $sess_id = session('auth_id');
+        $sess_id = session()->get('auth_id');
         if($sess_id){
             $model = new AdminModel();
             $res = $model->findAll()[0];

@@ -29,6 +29,7 @@ class LoginFilter implements FilterInterface
         }
         else{
             if(!$islog){
+                session()->destroy();
                 return redirect()->to(base_url('login'));
             }
             else{

@@ -44,6 +44,7 @@ class BaseController extends Controller
      */
     protected $currencyfmt;
 
+    protected $yearnow;
 
     /**
      * Pengaturan Sidebar:
@@ -82,6 +83,7 @@ class BaseController extends Controller
         // E.g.: $this->session = \Config\Services::session();
 
         $this->currencyfmt = numfmt_create('ID_id', NumberFormatter::CURRENCY);
+        $this->yearnow = session()->get('ann');
     }
 
     /**
