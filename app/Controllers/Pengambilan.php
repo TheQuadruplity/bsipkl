@@ -24,7 +24,14 @@ class Pengambilan extends BaseController
         ];
 
         $model->insert($data);
+        $jen = new JenisPersekotModel();
+        $data['jenis'] = $jen->find($this->request->getPost('jenis'))['nama'];
+        $data['jumlah'] = numfmt_format($this->currencyfmt, $data['jumlah']);
+        $this->page('pengambilan_submit', ['data' => $data, 'id' => $model->getInsertID()]);
+        //return redirect()->to(base_url().'/posneraca');
+    }
 
-        return redirect()->to(base_url().'/posneraca');
+    public function print(){
+        echo view('prints/memo_persekot2');
     }
 }
