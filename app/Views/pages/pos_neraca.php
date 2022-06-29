@@ -13,19 +13,21 @@
                 <thead>
                     <tr>
                         <th style="width: 3%;">No.</th>
+                        <th>No. Persekot</th>
                         <th>Waktu</th>
                         <th>Narasi</th>
                         <th>Jenis Persekot</th>
                         <th>Jumlah</th>
                         <th>Tersisa</th>
                         <th>Keterangan</th>
-                        <th>Form Memo Pengantar Persekot</th>
+                        <th>Memo</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($data as $i => $d): ?>
                     <tr class="<?=$d['success']?>">
                         <td><?= esc($i+1) ?></td>
+                        <td><?= esc($d['nomor']) ?></td>
                         <td><?= esc($d['waktu']) ?></td>
                         <td><?= esc($d['narasi']) ?></td>
                         <td><?= esc($d['jenis']) ?></td>

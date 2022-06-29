@@ -19,7 +19,7 @@
                 <label for="jenis">Persekot</label>
                 <select class="form-control" id="persekot" name="persekot" placeholder="Pilih persekot yang ingin diselesaikan" required>
                     <?php foreach($persekot as $j): ?>
-                    <option value="<?= esc($j['id']) ?>"><?= esc($j['narasi']) ?></option>
+                    <option value="<?= esc($j['id']) ?>"><?= esc('PL-'.str_pad($j['id'], 8, '0', STR_PAD_LEFT).' : '.$j['narasi']) ?></option>
                     <?php endforeach ?>
                 </select>
             </div>

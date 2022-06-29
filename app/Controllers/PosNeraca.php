@@ -14,6 +14,7 @@ class PosNeraca extends BaseController
             $data[$i]['success'] = $data[$i]['sisa']<=0?'table-success':'';
             $data[$i]['jumlah'] = numfmt_format($this->currencyfmt, $data[$i]['jumlah']);
             $data[$i]['sisa'] = numfmt_format($this->currencyfmt, $data[$i]['sisa']);
+            $data[$i]['nomor'] = 'PL-'.str_pad($data[$i]['id'], 8, '0', STR_PAD_LEFT);
         }
         $this->page('pos_neraca', ['data' => $data]);
     }
