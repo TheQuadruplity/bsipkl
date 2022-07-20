@@ -14,7 +14,15 @@
                     </tr>
                 </thead>
                 <tbody id="listbeban" name="lists">
-                    <?= $data ?>
+                    <?php foreach($data as $d): ?>
+                        <tr>
+                            <td><?= esc($d['nbeban']) ?></td>
+                            <td><?= esc($d['npersekot']) ?></td>
+                            <td><?= esc($d['rekening']) ?></td>
+                            <td><?= esc($d['jumlah']) ?></td>
+                            <td><?= esc($d['keterangan']) ?></td>
+                        </tr>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>
@@ -30,4 +38,21 @@
     for(i = 0; i < t.childElementCount; i++){
         t.children[i].lastChild.remove();
     }
+    $("#cetak").click(function(e){
+        e.preventDefault();
+        var data = document.getElementById("listbeban").innerHTML;
+        $.post({
+            url: '<?=base_url('penyelesaian/print')?>',
+            data: {data: data},
+            success: function(a, b, c){
+                n = window.open('', '_blank');
+                n.document.write(c.responseText);
+                n.document.close();
+                n.focus();
+                n.document.onload(function(){
+                    n.print();
+                })
+            }
+        })
+    })
 </script>
