@@ -4,7 +4,7 @@
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>">
     <div class="sidebar-brand-icon mx-3"><img src="<?= base_url()?>/logo-bsi.png" height="125%" width="125%"></img></div>
-    <div class="sidebar-brand-text mx-3">BSI Persekot</div>
+    <div class="sidebar-brand-text mx-3">BSI ArusKas</div>
 </a>
 
 <!-- Divider -->

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BSI Persekot</title>
+    <title>BSI Arus Kas</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= esc(base_url())?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
