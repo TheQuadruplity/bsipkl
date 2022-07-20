@@ -57,4 +57,10 @@ class Jurnal extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException();
         }
     }
+
+    public function print_j($awal, $akhir){
+        $model = new JurnalModel();
+        $data['data'] = $model->getJurnal($awal, $akhir);
+        echo view('prints/jurnal', $data);
+    }
 }

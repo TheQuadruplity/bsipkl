@@ -14,8 +14,8 @@
     </div>
 </div>
 
-<button type="button" class="btn btn-primary btn-icon-split mb-3"><span class="icon text-white-50">
-  <i class="fas fa-print"></i></span><span class="text">Cetak</span></button>
+<a id='printb' target="_blank" href="<?= base_url("jurnal/print_j/$now/$now") ?>" class="btn btn-primary btn-icon-split mb-3"><span class="icon text-white-50">
+  <i class="fas fa-print"></i></span><span class="text">Cetak</span></a>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -42,3 +42,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('.tanggal').change(function (){
+        var loc = '<?= base_url('jurnal/print_j') ?>/';
+        var awal = $('#awal').val();
+        var akhir = $('#akhir').val();
+        $('#printb')[0].href = loc+awal+'/'+akhir;
+    })
+</script>
