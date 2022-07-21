@@ -25,7 +25,7 @@
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered table-sm" width="100%" cellspacing="0">
-                <thead>
+                <thead id='head'>
                     <tr>
                         <th style="width: 3%;">No.</th>
                         <th>Waktu</th>
@@ -33,6 +33,7 @@
                         <th>Debit</th>
                         <th>Kredit</th>
                         <th>Saldo</th>
+                        <th>Hapus</th>
                     </tr>
                 </thead>
                 <tbody id='jurnal'>
@@ -50,4 +51,37 @@
         var akhir = $('#akhir').val();
         $('#printb')[0].href = loc+awal+'/'+akhir;
     })
+
+    function del_item(item, id){
+        var a = item.parentElement.parentElement.cloneNode(true);
+        var b = $('#head')[0].children[0].cloneNode(true);
+        b.lastElementChild.remove();
+        b.lastElementChild.remove();
+        a.lastElementChild.remove();
+        a.lastElementChild.remove();
+        Swal.fire({
+            title: 'Hapus?',
+            icon: 'warning',
+            html:
+            "<p>apakah yakin ingin menghapus?</p><p><table class='table table-bordered table-sm'><thead>"+b.innerHTML+"</thead><tbody>"+a.innerHTML+"</tbody><table></p>"
+            +'<div class="alert alert-info" role="alert">Penghapusan tidak memengaruhi kesediaan persekot/beban ataupun sisa persekot</div>',
+            width: '85%',
+            showCancelButton: true,
+            confirmButtonText: 'Hapus',
+            confirmButtonColor: '#d33',
+            cancelButtonText: 'Batal',
+            denyButtonText: `Batal`,
+            reverseButtons: true,
+            showLoaderOnConfirm: true,
+            preConfirm: () => {
+                return $.post('<?=base_url('jurnal/delete')?>',{id: id})
+                .done(()=>{
+                    window.location.replace('<?=base_url('jurnal')?>')
+                })
+                .catch(() => {
+                    Swal.showValidationMessage(`Error, data gagal dihapus`)
+                })
+            }
+        })
+    }
 </script>
