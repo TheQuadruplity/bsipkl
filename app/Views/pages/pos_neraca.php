@@ -16,26 +16,20 @@
                         <th>No. Persekot</th>
                         <th>Waktu</th>
                         <th>Narasi</th>
-                        <th>Jenis Persekot</th>
                         <th>Jumlah</th>
-                        <th>Tersisa</th>
-                        <th>Keterangan</th>
-                        <th>Memo</th>
+                        <th>Detail</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($data as $i => $d): ?>
-                    <tr class="<?=$d['success']?>">
+                    <tr class="<?=$d['success'].$d['start']?>">
                         <td><?= esc($i+1) ?></td>
                         <td><?= esc($d['nomor']) ?></td>
                         <td><?= esc($d['waktu']) ?></td>
                         <td><?= esc($d['narasi']) ?></td>
-                        <td><?= esc($d['jenis']) ?></td>
                         <td class="text-right"><?= esc($d['jumlah']) ?></td>
-                        <td class="text-right"><?= esc($d['sisa']) ?></td>
-                        <td><?= esc($d['keterangan']) ?></td>
-                        <td class="text-center"><a href="<?= base_url('posneraca/printmemo/'.$d['id'])?>" class="btn btn-primary btn-icon-split btn-sm" target="_blank"><span class="icon text-white-50">
-                              <i class="fas fa-print"></i></span><span class="text">Print</span></a></td>
+                        <td class="text-center"><a href="<?= base_url('posneraca/detail/'.$d['id'])?>" class="btn btn-primary btn-icon-split btn-sm"><span class="icon text-white-50">
+                              <i class="fas fa-file"></i></span><span class="text">Lihat</span></a></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
