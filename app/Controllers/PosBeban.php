@@ -32,7 +32,6 @@ class PosBeban extends BaseController
                 'text'=>'data berhasil dihapus',
                 'icon'=>'success',
             ]);
-            return redirect()->to(base_url('posbeban'));
         }
     }
 }
