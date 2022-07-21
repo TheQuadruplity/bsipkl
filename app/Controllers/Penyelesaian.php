@@ -47,12 +47,6 @@ class Penyelesaian extends BaseController
         $this->page('penyelesaian_submit', ['data' => $this->request->getPost('successdata')]);
     }
 
-    public function delete($id){
-        if($this->request->getMethod() == 'post'){
-            $model = new PenyelesaianModel();
-        }
-    }
-
     public function print(){
         echo view('prints/penyelesaian', ['data' => $this->request->getPost('data')]);
     }
