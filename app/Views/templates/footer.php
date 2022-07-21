@@ -62,6 +62,20 @@
     <!-- Page level custom scripts -->
     <script src="<?= esc(base_url())?>/js/demo/datatables-demo.js"></script>
 
+    <!-- sweetalert2 -->
+    <script src="<?= esc(base_url())?>/vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <?php if(session()->get('swal')): ?>
+        <script>
+            Swal.fire({
+                <?php foreach(session()->get('swal') as $k => $v): ?>
+                    <?= $k ?>: '<?= esc($v) ?>',
+                <?php endforeach; ?>
+            })
+        </script>
+        <?php session()->remove('swal')?>
+    <?php endif; ?>
+
+
 </body>
 
 </html>
