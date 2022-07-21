@@ -8,6 +8,7 @@
 </div>
 <?php endif ?>
 
+<?= csrf_field() ?>
 <div class="row">
   <div class="col">
     <h1 class="h3 mb-2 text-gray-800">Admin</h1>
