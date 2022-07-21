@@ -7,7 +7,7 @@
     <td><?= esc($d['kredit']) ?></td>
     <td><?= esc($d['saldo']) ?></td>
     <?php if($i > 0): ?>
-    <td class="text-center"><button class="btn btn-danger" onclick="return del_item(this, <?=$d['id']?>)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+    <td class="text-center"><button class="btn btn-danger btn-sm" onclick="return del_item(this, <?=$d['id']?>)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
     <?php endif ?>
 </tr>
 <?php endforeach ?>

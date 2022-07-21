@@ -32,7 +32,7 @@
                         <td><?= esc($d['rekening']) ?></td>
                         <td class="text-right"><?= esc($jumlah[$i]) ?></td>
                         <td><?= esc($d['keterangan']) ?></td>
-                        <td class="text-center"><button class="btn btn-danger" onclick="return del_item(this, <?=$d['id']?>)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+                        <td class="text-center"><button class="btn btn-danger btn-sm" onclick="return del_item(this, <?=$d['id']?>)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
