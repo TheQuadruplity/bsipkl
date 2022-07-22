@@ -37,20 +37,24 @@ class Admin extends BaseController
             $s = session();
             if($this->request->getPost('username')){
                 $model->update(null,['username' => $this->request->getPost('username')]);
-                $s->setFlashdata('msg', 'Username berhasil diubah!');
+                $msg = 'Username berhasil diubah!';
             }
             else if($this->request->getPost('password')){
                 $model->update(null,['password' => md5($this->request->getPost('password'))]);
-                $s->setFlashdata('msg', 'Password berhasil diubah!');
+                $msg = 'Password berhasil diubah!';
             }
             else if($this->request->getPost('manager')){
                 
                 $manager = explode("\t", $this->request->getPost('manager'));
                 $model->update(null,['pj_aosm' => $manager[1], 'area_manager' => $manager[0]]);
-                $s->setFlashdata('msg', 'Manager berhasil diubah!');
+                $msg = 'Manager berhasil diubah!';
             }
+            session()->set('swal',[
+                'title'=>'Berhasil',
+                'text'=>$msg,
+                'icon'=>'success',
+            ]);
         }
-
         return redirect()->to(base_url('admin'));
     }
     

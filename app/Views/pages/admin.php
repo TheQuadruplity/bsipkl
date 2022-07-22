@@ -1,13 +1,3 @@
-<?php if($msg): ?>
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    <span class="sr-only">Close</span>
-  </button>
-  <?= esc($msg) ?>
-</div>
-<?php endif ?>
-
 <?= csrf_field() ?>
 <div class="row">
   <div class="col">
@@ -27,11 +17,13 @@
   </div>
 </div>
 
-
+<div class="alert alert-warning" role="alert">
+    <strong>Anda akan diminta memasukkan <b>password saat ini</b> pada saat menyimpan perubahan akun</strong>
+</div>
 <!--p class="mb-4">Berikut adalah database Jenis Persekot</p-->
 
 <!-- <div class="container my-5"> -->
-  <div class="card my-5">
+  <div class="card mb-5">
     <form name="saveusername" action="">
       <div class="card-header">Ubah Username</div>
       <div class="card-body">
@@ -49,11 +41,11 @@
   <div class="card my-5">
     <form name="savepassword" action="">
       <div class="card-header">Ubah Password</div>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="newpassword">Password Baru</label>
-            <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="Masukkan Password Baru" required>
-          </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="newpassword">Password Baru</label>
+          <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="Masukkan Password Baru" required>
+        </div>
         <div class="form-group">
           <label for="narasi">Konfirmasi Password</label>
           <input type="password" class="form-control" id="konpassword" name="konpassword" placeholder="Masukkan Konfirmasi Password" required>
@@ -72,6 +64,8 @@
         <div class="form-group">
           <label for="area">Area Manager</label>
           <input type="text" class="form-control" id="area" name="area" placeholder="Masukkan Area Manager" value="<?= $data['area_manager'] ?>" required>
+        </div>
+        <div class="form-group">
           <label for="aosm">PJ AOSM</label>
           <input type="text" class="form-control" id="aosm" name="aosm" placeholder="Masukkan PJ AOSM" value="<?= $data['pj_aosm'] ?>" required>
         </div>
@@ -83,9 +77,6 @@
   </div>
 
 
-  <div class="alert alert-info" role="alert">
-      <strong>Anda akan diminta memasukkan <b>password saat ini</b> pada saat menyimpan perubahan akun</strong>
-  </div>
 <!-- </div> -->
 
 
