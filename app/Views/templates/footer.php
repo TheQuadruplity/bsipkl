@@ -8,7 +8,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Dibuat Oleh : Vandicco Maris Siregar &copy; 2021</span>
+                        <span>Dibuat Oleh : Vandicco Maris Siregar &copy; 2022</span>
                     </div>
                 </div>
             </footer>
