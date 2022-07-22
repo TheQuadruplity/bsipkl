@@ -46,7 +46,8 @@
             <button class="btn btn-primary" id="tambah">Tambah</button>
         </div>
     </form>
-
+</div>
+<div class="card my-3">
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered table-sm" width="100%" cellspacing="0">
@@ -125,34 +126,11 @@
                     '<input type="hidden" name="successdata['+i+'][keterangan]" value="'+row.children[4].innerHTML+'">'+
                     '<input type="hidden" name="successdata['+i+'][nbeban]" value="'+row.children[0].innerHTML+'">'+
                     '<input type="hidden" name="successdata['+i+'][npersekot]" value="'+row.children[1].innerHTML+'">';
-                    /*
-                d = {
-                    'beban': row.children[0].value,
-                    'jumlah': row.children[3].innerHTML,
-                    'rekening': row.children[2].innerHTML,
-                    'persekot': row.children[1].value,
-                    'keterangan': row.children[4].innerHTML,
-                    
-                }
-                */
                 $("#f2")[0].innerHTML += inner;
                 dat.push(d);
             }
 
             $("#f2")[0].submit();
-
-            /*
-            $.post({
-                url: "penyelesaian/save/",
-                dataType: "html",
-                data: {data: dat},
-                success: function (response) {
-                    //console.log(response);
-                    $("#sdat")[0].value = t.innerHTML;
-                    $("#f2")[0].submit();
-                },
-            })
-            */
         }
         else{
             this.setCustomValidity('Submit setidaknya satu');
