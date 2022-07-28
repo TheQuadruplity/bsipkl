@@ -23,39 +23,58 @@
 </head>
 
 <body>
-    <div class="table-responsive">
-
-        <table class="table table-bordered table-sm">
-            <thead>
+    <h1 style="text-align: center;">Jurnal Persekot</h1>
+    <h3 style="text-align: center;">Periode <?=$awal?> sampai <?=$akhir?></h3>
+    <table style="width: 100%; border-collapse: collapse; border-style: solid;" border="1">
+        <thead>
+            <tr>
+                <th style="width: 3%;">No.</th>
+                <th>Waktu</th>
+                <th>No. Persekot</th>
+                <th>Keterangan</th>
+                <th>Debit</th>
+                <th>Kredit</th>
+                <th>Saldo</th>
+            </tr>
+        </thead>
+        <tbody id='jurnal'>
+            <?php foreach($data as $i => $d): ?>
                 <tr>
-                    <th style="width: 3%;">No.</th>
-                    <th>Waktu</th>
-                    <th>Keterangan</th>
-                    <th>Debit</th>
-                    <th>Kredit</th>
-                    <th>Saldo</th>
+                    <td><?= $i ?></td>
+                    <td><?= esc($d['waktu']) ?></td>
+                    <td><?= 'PL-'.str_pad($d['persekot'], 8, '0', STR_PAD_LEFT);?></td>
+                    <td><?= esc($d['nama']) ?></td>
+                    <td><?= esc($d['debit']) ?></td>
+                    <td><?= esc($d['kredit']) ?></td>
+                    <td><?= esc($d['saldo']) ?></td>
                 </tr>
-            </thead>
-            <tbody id='jurnal'>
-                <?= view('minis/jurnal', ['data' => $data]) ?>
-            </tbody>
-        </table>    
-        
-    </div>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <p>PT BANK SYARIAH INDONESIA TBK</p>
+    <p>AREA SEMARANG KOTA</p>
+    <table style="width: 61.0794%; border-collapse: collapse; border-style: none;">
+        <tbody>
+            <tr>
+                <td style="width: 29.1666%;">
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>abc</p>
+                    <p>Area Manager</p>
+                </td>
+                <td style="width: 26.1092%;">
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>cde</p>
+                    <p>PJ AOSM</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
     <script>window.onfocus=window.close;
     window.print();
     </script>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
 
 </body>

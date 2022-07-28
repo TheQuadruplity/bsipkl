@@ -20,7 +20,7 @@ class Jurnal extends BaseController
         $this->page('jurnal', ['datemin' => $datemin, 'datemax' => $datemax, 'now' => $thisyear?date('Y-m-d'):$datemax, 'data'=>$data]);
     }
 
-    public function harian($tanggal){
+/*     public function harian($tanggal){
         $tgl = explode('-', $tanggal);
         $db = \Config\Database::connect();
         $sql = "(SELECT * FROM jurnal z
@@ -47,7 +47,7 @@ class Jurnal extends BaseController
         $this->page('persekot_harian', 
         ['data' => $data, 'year' => $tgl[0], 'month' => $tgl[1], 'day' => $tgl[2]]);
 
-    }
+    } */
 
     public function jurnal($awal, $akhir){
         if($this->request->isAJAX()){
@@ -78,6 +78,8 @@ class Jurnal extends BaseController
     public function print_j($awal, $akhir){
         $model = new JurnalModel();
         $data['data'] = $model->getJurnal($awal, $akhir);
+        $data['awal'] = $awal;
+        $data['akhir'] = $akhir;
         echo view('prints/jurnal', $data);
     }
 }
