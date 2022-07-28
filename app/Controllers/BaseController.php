@@ -55,8 +55,8 @@ class BaseController extends Controller
      */
     protected $sidebar = [
         ['jurnal', 'Jurnal', 'fas fa-book'],
-        ['posneraca', 'Pos Neraca', 'fas fa-balance-scale'],
-        ['posbeban', 'Pos Beban', 'fas fa-weight-hanging'],
+        ['posneraca', 'Riwayat Pengambilan', 'fas fa-balance-scale'],
+        ['posbeban', 'Riwayat Penyelesaian', 'fas fa-weight-hanging'],
         [],
         ['pengambilan', 'Pengambilan', 'fas fa-arrow-right'],
         ['penyelesaian', 'Penyelesaian', 'fas fa-arrow-left'],

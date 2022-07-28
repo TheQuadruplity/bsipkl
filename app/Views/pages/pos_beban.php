@@ -1,5 +1,5 @@
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Daftar Beban</h1>
+<h1 class="h3 mb-2 text-gray-800">Riwayat Penyelesaian</h1>
 <p class="mb-4">Berikut adalah database beban</p>
 
 <!-- DataTales Example -->
@@ -73,3 +73,10 @@
         })
     }
 </script>
+
+<!-- Page level plugins -->
+<script src="<?= esc(base_url())?>/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= esc(base_url())?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="<?= esc(base_url())?>/js/demo/datatables-demo.js"></script>
