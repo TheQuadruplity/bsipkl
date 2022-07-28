@@ -22,6 +22,11 @@ class Beban extends BaseController
                 'nama' => $this->request->getPost('nama'),
                 'rekening' => $this->request->getPost('rek')
             ]);
+            session()->set('swal',[
+                'title'=>'Berhasil',
+                'text'=>'Data berhasil ditambahkan',
+                'icon'=>'success',
+            ]);
         }
 
         return redirect()->to(base_url().'/beban');
@@ -30,6 +35,12 @@ class Beban extends BaseController
     public function delete($nomor){
         $model = new BebanModel();
         $model->delete($nomor);
+        
+        session()->set('swal',[
+            'title'=>'Berhasil',
+            'text'=>'Data berhasil dihapus',
+            'icon'=>'success',
+        ]);
 
         return redirect()->to(base_url().'/beban');
     }
@@ -40,6 +51,11 @@ class Beban extends BaseController
             $model->update($this->request->getPost('id'), [
                 'nama' => $this->request->getPost('nama'),
                 'rekening' => $this->request->getPost('rek')
+            ]);
+            session()->set('swal',[
+                'title'=>'Berhasil',
+                'text'=>'Data berhasil diubah',
+                'icon'=>'success',
             ]);
         }
 

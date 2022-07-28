@@ -1,6 +1,9 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Rekening Beban <?= esc($rek['nama']) ?> - <?= esc($rek['rekening']) ?></h1>
-<p class="mb-4">Berikut adalah rekening beban</p>
+<p class="mb-3">Berikut adalah rekening beban</p>
+
+<a href="<?= base_url("beban") ?>" class="btn btn-secondary btn-icon-split mb-3"><span class="icon text-white-50">
+<i class="fas fa-arrow-left"></i></span><span class="text">Kembali</span></a>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">

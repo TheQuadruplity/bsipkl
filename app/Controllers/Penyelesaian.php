@@ -12,16 +12,14 @@ class Penyelesaian extends BaseController
     public function index(){
         $persekotmodel = new PersekotModel();
         $bebanmodel = new BebanModel();
-        $rekeningmodel = new RekeningModel();
         $persekot = $persekotmodel->builder()->
         select('id, narasi, sisa')->
         where('sisa > 0')->
         get()->getResultArray();
         $beban = $bebanmodel->findAll();
-        $rekening = $rekeningmodel->findAll();
         for($i=0; $i<sizeof($persekot); $i++) $persekot[$i]['sisa'] = numfmt_format($this->currencyfmt, $persekot[$i]['sisa']);
         $this->page('penyelesaian', 
-        ['persekot' => $persekot, 'beban' => $beban, 'rekening' => $rekening]);
+        ['persekot' => $persekot, 'beban' => $beban]);
     }
 
     public function save(){
