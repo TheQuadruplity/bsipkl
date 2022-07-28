@@ -1,7 +1,7 @@
 <h1 class="h3 mb-2 text-gray-800">Detail Persekot</h1>
 
 <div class="container">
-    <div class="card my-5">
+    <div class="card my-3">
         <div class="card-body">
             <div class="row">
                 <div class="col-3">No. Persekot</div>
@@ -34,6 +34,8 @@
             <?php endif ?>
         </div>
         <div class="card-footer">
+        <a href="<?= base_url("posneraca") ?>" class="btn btn-secondary btn-icon-split"><span class="icon text-white-50">
+<i class="fas fa-arrow-left"></i></span><span class="text">Kembali</span></a>
             <a href="<?= base_url('posneraca/printmemo/'.$id)?>" class="btn btn-primary btn-icon-split" target="_blank"><span class="icon text-white-50">
             <i class="fas fa-print"></i></span><span class="text">Print</span></a>
             <?php if($dimulai): ?>
