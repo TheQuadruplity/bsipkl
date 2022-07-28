@@ -29,11 +29,21 @@
 
     </div>
     <div class="card-footer">
-        <button class="btn btn-primary" id="cetak">Cetak</button>
+        <a href="<?= base_url("penyelesaian") ?>" class="btn btn-secondary btn-icon-split"><span class="icon text-white-50">
+        <i class="fas fa-arrow-left"></i></span><span class="text">Kembali</span></a>
+        <a href="<?= base_url("posbeban") ?>" class="btn btn-secondary btn-icon-split"><span class="icon text-white-50">
+        <i class="fas fa-file"></i></span><span class="text">Ke Riwayat Penyelesaian</span></a>
+        <button class="btn btn-primary btn-icon-split" id="cetak"><span class="icon text-white-50">
+        <i class="fas fa-print"></i></span><span class="text">Cetak</span></button>
     </div>
+
 </div>
 
+<p hidden id='jsondata'><?= esc($json) ?></p>
+
 <script>
+    var data = document.getElementById('jsondata').innerHTML;
+    var parse = JSON.parse(data);
     t = $("#listbeban")[0];
     for(i = 0; i < t.childElementCount; i++){
         t.children[i].lastChild.remove();
@@ -43,7 +53,7 @@
         var data = document.getElementById("listbeban").innerHTML;
         $.post({
             url: '<?=base_url('penyelesaian/print')?>',
-            data: {data: data},
+            data: {data: {data: parse, waktu: '<?=$waktu?>'}},
             success: function(a, b, c){
                 n = window.open('', '_blank');
                 n.document.write(c.responseText);

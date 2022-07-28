@@ -44,7 +44,10 @@ class Penyelesaian extends BaseController
         //$model->insert($this->request->getPost('data'));
         $model->insertBatch($this->request->getPost('successdata'));
 
-        $this->page('penyelesaian_submit', ['data' => $this->request->getPost('successdata')]);
+        $data['data'] = $this->request->getPost('successdata');
+        $data['waktu'] = date("Y-m-d H:i:s");
+        $data['json'] = json_encode($data['data']);
+        $this->page('penyelesaian_submit', $data);
     }
 
     public function print(){

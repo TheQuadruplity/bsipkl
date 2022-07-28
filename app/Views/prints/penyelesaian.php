@@ -23,34 +23,54 @@
 </head>
 
 <body>
-    <div class="table-responsive">
-
-        <table class="table table-bordered table-sm">
-            <thead>
+    <h1 style="text-align: center;">Penyelesaian Persekot</h1>
+    <h3 style="text-align: center;">Waktu: <?= $data['waktu']?></h3>
+    <table style="width: 100%; border-collapse: collapse; border-style: solid;" border="1">
+        <thead>
+            <tr>
+                <th>Beban</th>
+                <th>Persekot</th>
+                <th>Rekening</th>
+                <th>Jumlah</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($data['data'] as $d): ?>
                 <tr>
-                    <th>Beban</th>
-                    <th>Persekot</th>
-                    <th>Rekening</th>
-                    <th>Jumlah</th>
-                    <th>Keterangan</th>
+                    <td><?= esc($d['nbeban']) ?></td>
+                    <td><?= esc($d['npersekot']) ?></td>
+                    <td><?= esc($d['rekening']) ?></td>
+                    <td><?= esc($d['jumlah']) ?></td>
+                    <td><?= esc($d['keterangan']) ?></td>
                 </tr>
-            </thead>
-            <tbody id='jurnal'>
-                <?=$data?>
-            </tbody>
-        </table>    
-        
-    </div>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <p>PT BANK SYARIAH INDONESIA TBK</p>
+    <p>AREA SEMARANG KOTA</p>
+    <table style="width: 61.0794%; border-collapse: collapse; border-style: none;">
+        <tbody>
+            <tr>
+                <td style="width: 29.1666%;">
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>abc</p>
+                    <p>Area Manager</p>
+                </td>
+                <td style="width: 26.1092%;">
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>cde</p>
+                    <p>PJ AOSM</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
+    <script>window.onfocus=window.close;
+    window.print();
+    </script>
 
 </body>
