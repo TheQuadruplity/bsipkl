@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\BebanModel;
 use App\Models\PenyelesaianModel;
 
 class PosBeban extends BaseController
@@ -9,11 +10,17 @@ class PosBeban extends BaseController
     public function index(){
         $model = new PenyelesaianModel();
         $data = $model->get_penyelesaian();
-        $jumlah = [];
-        foreach($data as $d){
-            array_push($jumlah, numfmt_format($this->currencyfmt, $d['jumlah']));
+        $model = new BebanModel();
+        $rekening = $model->findAll();
+        $kvrekening = [];
+        foreach($rekening as $r) $kvrekening[$r['id']] = ['nama' => $r['nama'], 'rekening' => $r['rekening']];
+        foreach($data as $i => $d){
+            $data[$i]['jumlah'] = numfmt_format($this->currencyfmt, $d['jumlah']);
+            $data[$i]['nomorpersekot'] = 'PL-'.str_pad($d['nomorpersekot'], 8, '0', STR_PAD_LEFT);
+            $data[$i]['namabeban'] = $kvrekening[$d['beban']]['nama'];
+            $data[$i]['rekening'] = $kvrekening[$d['beban']]['rekening'];
         }
-        $this->page('pos_beban', ['data'=>$data, 'jumlah'=>$jumlah]);
+        $this->page('pos_beban', ['data'=>$data]);
     }
 
     public function delete(){
@@ -32,10 +39,18 @@ class PosBeban extends BaseController
     public function printexcel(){
         $model = new PenyelesaianModel();
         $data = $model->get_penyelesaian();
-        $data = array_reverse($data, false);
-        for($i = 0; $i < sizeof($data); $i++){
-            $data[$i]['nomorpersekot'] = 'PL-'.str_pad($data[$i]['nomorpersekot'], 8, '0', STR_PAD_LEFT);
+        $model = new BebanModel();
+        $rekening = $model->findAll();
+        $kvrekening = [];
+        foreach($rekening as $r) $kvrekening[$r['id']] = ['nama' => $r['nama'], 'rekening' => $r['rekening']];
+        foreach($data as $i => $d){
+            $data[$i]['jumlah'] = numfmt_format($this->currencyfmt, $d['jumlah']);
+            $data[$i]['nomorpersekot'] = 'PL-'.str_pad($d['nomorpersekot'], 8, '0', STR_PAD_LEFT);
+            $data[$i]['namabeban'] = $kvrekening[$d['beban']]['nama'];
+            $data[$i]['rekening'] = $kvrekening[$d['beban']]['rekening'];
         }
+        $data = array_reverse($data);
+
         $filename = 'Beban_'.date('YmdHis').'.xls';
         header("Content-type: application/vnd-ms-excel");
         header("Content-Disposition: attachment; filename=$filename");

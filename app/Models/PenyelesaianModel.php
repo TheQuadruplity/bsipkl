@@ -18,7 +18,7 @@ class PenyelesaianModel extends Model{
         $data = $this->builder()
         ->join('beban', 'penyelesaian.beban=beban.id')
         ->join('persekot', 'penyelesaian.persekot=persekot.id')
-        ->select('penyelesaian.waktu, penyelesaian.jumlah, beban, penyelesaian.rekening, beban.nama as beban, persekot.narasi as persekot, penyelesaian.keterangan, penyelesaian.id, penyelesaian.persekot as nomorpersekot')
+        ->select('penyelesaian.waktu, penyelesaian.jumlah, penyelesaian.rekening, beban, persekot.narasi as persekot, penyelesaian.keterangan, penyelesaian.id, penyelesaian.persekot as nomorpersekot')
         ->where('YEAR(penyelesaian.waktu) =', session()->get('ann'))
         ->orderBy('penyelesaian.waktu', 'DESC')
         ->get()->getResultArray();

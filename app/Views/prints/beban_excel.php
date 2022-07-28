@@ -16,7 +16,7 @@
         <tr>
             <td><?=$i+1?></td>
             <td><?=$d['waktu']?></td>
-            <td><?=esc($d['beban'])?></td>
+            <td><?=esc($d['namabeban'])?></td>
             <td><?=$d['rekening']?></td>
             <td><?=esc($d['persekot'])?></td>
             <td><?=$d['nomorpersekot']?></td>

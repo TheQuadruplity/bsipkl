@@ -15,8 +15,7 @@
                     <tr>
                         <th style="width: 3%;">No.</th>
                         <th>Waktu</th>
-                        <th>Beban</th>
-                        <th>Rekening</th>
+                        <th>Beban - Rekening</th>
                         <th>Persekot</th>
                         <th>Jumlah</th>
                         <th>Keterangan</th>
@@ -28,10 +27,9 @@
                     <tr>
                         <td><?= esc($i+1) ?></td>
                         <td><?= esc($d['waktu']) ?></td>
-                        <td><?= esc($d['beban']) ?></td>
-                        <td><?= esc($d['rekening']) ?></td>
-                        <td><?= esc($d['persekot']) ?></td>
-                        <td class="text-right"><?= esc($jumlah[$i]) ?></td>
+                        <td><?= esc($d['namabeban'].' - '.$d['rekening']) ?></td>
+                        <td><?= esc($d['nomorpersekot'].' - '.$d['persekot']) ?></td>
+                        <td class="text-right"><?= esc($d['jumlah']) ?></td>
                         <td><?= esc($d['keterangan']) ?></td>
                         <td class="text-center"><button class="btn btn-danger btn-sm" onclick="return del_item(this, <?=$d['id']?>)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                     </tr>
