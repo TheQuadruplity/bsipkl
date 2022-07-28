@@ -64,7 +64,6 @@ class BaseController extends Controller
         ['database'],
         ['jenispersekot', 'Jenis Persekot', 'fas fa-landmark'],
         ['beban', 'Daftar Beban', 'fas fa-th-list'],
-        //['rekening', 'Daftar Rekening', 'fas fa-credit-card'],
         [],
         ['admin', 'Admin', "fas fa-user"],
         ];
