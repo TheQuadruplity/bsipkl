@@ -26,8 +26,15 @@
                         <td><?= esc($i+1) ?></td>
                         <td><?= esc($d['nama']) ?></td>
                         <td class="text-center">
-                          <button type="button" class="btn btn-danger btn-icon-split btn-sm delete" data-toggle="modal" data-target="#deleteModal" value="<?=esc($d['id'])?>"><span class="icon text-white-50">
+                        <?php if(isset($count[$d['id']])): ?>
+                            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Jenis masih dipakai">
+                            <button disabled type="button" class="btn btn-danger btn-icon-split btn-sm delete"><span class="icon text-white-50">
                               <i class="fas fa-trash"></i></span><span class="text">Hapus</span></button>
+                            </span>
+                        <?php else: ?>
+                            <button type="button" class="btn btn-danger btn-icon-split btn-sm delete" data-toggle="modal" data-target="#deleteModal" value="<?=esc($d['id'])?>"><span class="icon text-white-50">
+                              <i class="fas fa-trash"></i></span><span class="text">Hapus</span></button>
+                        <?php endif ?>
                           <button type="button" class="btn btn-warning btn-icon-split btn-sm edit" data-toggle="modal" data-target="#editModal" data-id='<?= esc($d['id']) ?>' 
                             data-nama='<?= esc($d['nama']) ?>'><span class="icon text-white-50">
                           <i class="fas fa-pencil-alt"></i></span><span class="text">Edit</span></button>
@@ -115,6 +122,8 @@
 
 <script>$('.edit').click(function (e) { $('#editnama').val(this.dataset['nama']);$('#editid').val(this.dataset['id']);});</script>
 <script>$('.delete').click(function(){$('#deleteloc').attr('href', '<?= base_url('jenispersekot/delete')?>/'+$(this).val())})</script>
+
+<script>$(function () {$('[data-toggle="tooltip"]').tooltip()})</script>
 
 <!-- Page level plugins -->
 <script src="<?= esc(base_url())?>/vendor/datatables/jquery.dataTables.min.js"></script>
