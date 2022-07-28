@@ -59,4 +59,16 @@ class PosNeraca extends BaseController
             ]);
         }
     }
+
+    public function printexcel(){
+        $model = new PersekotModel();
+        $data = $model->getPersekot();
+        for($i = 0; $i < sizeof($data); $i++){
+            $data[$i]['nomor'] = 'PL-'.str_pad($data[$i]['id'], 8, '0', STR_PAD_LEFT);
+        }
+        $filename = 'Persekot_'.date('YmdHis').'.xls';
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=$filename");
+        echo view('prints/persekot_excel', ['data' => $data]);
+    }
 }

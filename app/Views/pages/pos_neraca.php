@@ -5,7 +5,8 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Database</h6>
+        <a  href="<?= base_url("posneraca/printexcel") ?>" class="btn btn-primary btn-icon-split"><span class="icon text-white-50">
+        <i class="fas fa-file-excel"></i></span><span class="text">Simpan ke excel</span></a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
