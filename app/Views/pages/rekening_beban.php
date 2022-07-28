@@ -1,11 +1,12 @@
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Rekening Beban <?= esc($nama) ?></h1>
+<h1 class="h3 mb-2 text-gray-800">Rekening Beban <?= esc($rek['nama']) ?> - <?= esc($rek['rekening']) ?></h1>
 <p class="mb-4">Berikut adalah rekening beban</p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Database</h6>
+        <a  href="<?= base_url("beban/printexcel/$id") ?>" class="btn btn-primary btn-icon-split"><span class="icon text-white-50">
+        <i class="fas fa-file-excel"></i></span><span class="text">Simpan ke excel</span></a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -15,7 +16,6 @@
                         <th style="width: 3%;">No.</th>
                         <th>Waktu</th>
                         <th>Persekot</th>
-                        <th>Rekening</th>
                         <th>Jumlah</th>
                     </tr>
                 </thead>
@@ -25,13 +25,12 @@
                         <td><?= esc($i+1) ?></td>
                         <td><?= esc($d['waktu']) ?></td>
                         <td><?= esc($d['persekot']) ?></td>
-                        <td><?= esc($d['rekening']) ?></td>
                         <td class="text-right"><?= esc($d['jumlah']) ?></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
                 <tfoot>
-                    <th class="text-right" colspan="4">Jumlah</th>
+                    <th class="text-right" colspan="3">Jumlah</th>
                     <th class="text-right"><?= esc($jumlah) ?></th>
                 </tfoot>
             </table>

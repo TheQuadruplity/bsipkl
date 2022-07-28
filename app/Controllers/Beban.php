@@ -47,22 +47,32 @@ class Beban extends BaseController
     }
 
     public function rekening($id){
-        $model = new PenyelesaianModel();
-        $data = $model->builder()
-        ->select('penyelesaian.waktu, penyelesaian.jumlah, rekening, persekot.narasi AS persekot')
-        ->join('persekot', 'penyelesaian.persekot = persekot.id')
-        ->where('beban', $id)
-        ->where('YEAR(penyelesaian.waktu) =', $this->yearnow)
-        ->get()->getResultArray();
+        $model = new BebanModel();
+        $data = $model->get_rekening_beban($id);
         $sum = 0;
         foreach($data as $i => $d){
             $sum += $data[$i]['jumlah'];
             $data[$i]['jumlah'] = numfmt_format($this->currencyfmt, $data[$i]['jumlah']);
         }
         $sum = numfmt_format($this->currencyfmt, $sum);
-        $modelb = new BebanModel();
-        $nama = $modelb->find($id);
+        $rek = $model->find($id);
 
-        $this->page('rekening_beban', ['data' => $data, 'nama' => $nama['nama'], 'jumlah' => $sum]);
+        $this->page('rekening_beban', ['data' => $data, 'rek' => $rek, 'jumlah' => $sum, 'id' => $id]);
+    }
+
+    public function printexcel($id){
+        $model = new BebanModel();
+        $data = $model->get_rekening_beban($id);
+        $sum = 0;
+        foreach($data as $i => $d){
+            $sum += $data[$i]['jumlah'];
+            $data[$i]['nomorpersekot'] = 'PL-'.str_pad($data[$i]['nomorpersekot'], 8, '0', STR_PAD_LEFT);
+        }
+        $rek = $model->find($id);
+
+        $filename = 'Rekening_'.$rek['rekening'].date('_YmdHis').'.xls';
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=$filename");
+        echo view('prints/rekening_excel', ['data' => $data, 'sum' => $sum]);
     }
 }
