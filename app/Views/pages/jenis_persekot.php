@@ -115,3 +115,10 @@
 
 <script>$('.edit').click(function (e) { $('#editnama').val(this.dataset['nama']);$('#editid').val(this.dataset['id']);});</script>
 <script>$('.delete').click(function(){$('#deleteloc').attr('href', '<?= base_url('jenispersekot/delete')?>/'+$(this).val())})</script>
+
+<!-- Page level plugins -->
+<script src="<?= esc(base_url())?>/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= esc(base_url())?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="<?= esc(base_url())?>/js/demo/datatables-demo.js"></script>
