@@ -28,6 +28,7 @@
                     <tr>
                         <th style="width: 3%;">No.</th>
                         <th>Waktu</th>
+                        <th>No. Persekot</th>
                         <th>Keterangan</th>
                         <th>Debit</th>
                         <th>Kredit</th>
@@ -69,7 +70,6 @@
             confirmButtonText: 'Hapus',
             confirmButtonColor: '#d33',
             cancelButtonText: 'Batal',
-            denyButtonText: `Batal`,
             reverseButtons: true,
             showLoaderOnConfirm: true,
             preConfirm: () => {
