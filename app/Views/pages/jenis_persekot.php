@@ -17,6 +17,7 @@
                     <tr>
                         <th style="width: 3%;">No.</th>
                         <th>Nama Persekot</th>
+                        <th>Mutasi Persekot</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -25,6 +26,7 @@
                     <tr>
                         <td><?= esc($i+1) ?></td>
                         <td><?= esc($d['nama']) ?></td>
+                        <td class="text-center"><a href="<?= base_url('jenispersekot/mutasi/'.$d['id'])?>" class="btn btn-primary btn-icon-split btn-sm"><span class="icon text-white-50"><i class="fas fa-scroll"></i></span><span class="text">Lihat</span></a></td>
                         <td class="text-center">
                         <?php if(isset($count[$d['id']])): ?>
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Jenis masih dipakai">
