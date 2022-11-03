@@ -56,14 +56,14 @@
                 <td style="width: 29.1666%;">
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>
-                    <p>abc</p>
+                    <p><?= esc($man['area_manager']) ?></p>
                     <p>Area Manager</p>
                 </td>
                 <td style="width: 26.1092%;">
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>
-                    <p>cde</p>
-                    <p>PJ AOSM</p>
+                    <p><?= esc($man['pj_aosm']) ?></p>
+                    <p>AOSM</p>
                 </td>
             </tr>
         </tbody>

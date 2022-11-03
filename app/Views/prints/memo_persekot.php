@@ -301,7 +301,7 @@ normal'><span lang=EN-US>&nbsp;</span></p>
   <td width=399 valign=top style='width:299.45pt;padding:0cm 5.4pt 0cm 5.4pt'>
   <p class=MsoNormal style='margin-bottom:0cm;text-align:justify;line-height:
   normal'><?=$man['pj_aosm']?><br>
-  Pj AOSM</p>
+  AOSM</p>
   </td>
  </tr>
 </table>
