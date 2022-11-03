@@ -30,8 +30,4 @@ class Pengambilan extends BaseController
         $this->page('pengambilan_submit', ['data' => $data, 'id' => $model->getInsertID()]);
         //return redirect()->to(base_url().'/posneraca');
     }
-
-    public function print(){
-        echo view('prints/memo_persekot2');
-    }
 }
