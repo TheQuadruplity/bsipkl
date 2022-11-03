@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\AdminModel;
 use App\Models\BebanModel;
 use App\Models\PenyelesaianModel;
 use App\Models\PersekotModel;
@@ -49,6 +50,8 @@ class Penyelesaian extends BaseController
     }
 
     public function print(){
-        echo view('prints/penyelesaian', ['data' => $this->request->getPost('data')]);
+        $mans = new AdminModel();
+        $mans = $mans->builder()->select('area_manager, pj_aosm')->get()->getRowArray();
+        echo view('prints/penyelesaian', ['data' => $this->request->getPost('data'), 'man' => $mans]);
     }
 }
