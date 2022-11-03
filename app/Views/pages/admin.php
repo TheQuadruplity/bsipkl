@@ -66,7 +66,7 @@
           <input type="text" class="form-control" id="area" name="area" placeholder="Masukkan Area Manager" value="<?= $data['area_manager'] ?>" required>
         </div>
         <div class="form-group">
-          <label for="aosm">PJ AOSM</label>
+          <label for="aosm">AOSM</label>
           <input type="text" class="form-control" id="aosm" name="aosm" placeholder="Masukkan PJ AOSM" value="<?= $data['pj_aosm'] ?>" required>
         </div>
       </div>
