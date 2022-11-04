@@ -6,20 +6,24 @@
             <table class="table table-bordered table-sm" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>Rekening Beban</th>
                         <th>Beban</th>
-                        <th>Persekot</th>
-                        <th>Rekening</th>
-                        <th>Jumlah</th>
+                        <th>Debet</th>
+                        <th>Rekening Persekot</th>
+                        <th>narasi</th>
+                        <th>Kredit</th>
                         <th>Keterangan</th>
                     </tr>
                 </thead>
                 <tbody id="listbeban" name="lists">
                     <?php foreach($data as $d): ?>
                         <tr>
-                            <td><?= esc($d['nbeban']) ?></td>
-                            <td><?= esc($d['npersekot']) ?></td>
-                            <td><?= esc($d['rekening']) ?></td>
-                            <td><?= esc($d['jumlah']) ?></td>
+                            <td><?= esc($d['rekening_beban']) ?></td>
+                            <td><?= esc($d['nama_beban']) ?></td>
+                            <td><?= esc($d['jumlah_beban']) ?></td>
+                            <td><?= esc($d['rekening_persekot']) ?></td>
+                            <td><?= esc($d['narasi_persekot']) ?></td>
+                            <td><?= esc($d['jumlah_persekot']) ?></td>
                             <td><?= esc($d['keterangan']) ?></td>
                         </tr>
                     <?php endforeach ?>
@@ -42,27 +46,26 @@
 <p hidden id='jsondata'><?= esc($json) ?></p>
 
 <script>
-    var data = document.getElementById('jsondata').innerHTML;
-    var parse = JSON.parse(data);
-    t = $("#listbeban")[0];
-    for(i = 0; i < t.childElementCount; i++){
-        t.children[i].lastChild.remove();
-    }
-    $("#cetak").click(function(e){
-        e.preventDefault();
-        var data = document.getElementById("listbeban").innerHTML;
-        $.post({
-            url: '<?=base_url('penyelesaian/print')?>',
-            data: {data: {data: parse, waktu: '<?=$waktu?>'}},
-            success: function(a, b, c){
-                n = window.open('', '_blank');
-                n.document.write(c.responseText);
-                n.document.close();
-                n.focus();
-                n.document.onload(function(){
-                    n.print();
-                })
-            }
-        })
+$("#cetak").click(function(e){
+    parse = document.getElementById('jsondata').innerHTML;
+    e.preventDefault();
+    $.post({
+        url: '<?=base_url('penyelesaian/print')?>',
+        data: {data: parse, waktu: '<?=$waktu?>'},
+        success: function(a, b, c){
+            n = window.open('', '_blank');
+            n.document.write(c.responseText);
+            n.document.close();
+            n.focus();
+            n.document.onload(function(){
+                n.print();
+            })
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            n = window.open('', '_blank');
+            n.document.write(xhr.responseText);
+            n.document.close();
+        }
     })
+})
 </script>

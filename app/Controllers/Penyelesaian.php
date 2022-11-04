@@ -7,6 +7,7 @@ use App\Models\BebanModel;
 use App\Models\PenyelesaianModel;
 use App\Models\PersekotModel;
 use App\Models\RekeningModel;
+use Exception;
 
 class Penyelesaian extends BaseController
 {
@@ -25,25 +26,33 @@ class Penyelesaian extends BaseController
 
     public function save(){
         $model = new PenyelesaianModel();
+        $model2 = new BebanModel();
+        $model3 = new PersekotModel();
 
-        /*
         $ins = [];
-        foreach($this->request->getPost('successdata') as $d){
+        $savedata = [];
+        foreach(json_decode($this->request->getPost('successdata'), true) as $d){
+            $beban = $model2->find($d['beban']);
+            $persekot = $model3->find($d['persekot']);
             $ob = [
-                'beban' => $d['beban'], 
-                'jumlah' => $d['jumlah'], 
-                'persekot' => $d['persekot'], 
-                'rekening' => $d['rekening'], 
-                'keterangan' => $d['keterangan']
+                'rekening_beban' => $beban['rekening'], 
+                'nama_beban' => $beban['nama'], 
+                'jumlah_beban' => numfmt_format($this->currencyfmt,$d['jumlah']), 
+                'rekening_persekot' => $persekot['id'], 
+                'narasi_persekot' => $persekot['narasi'], 
+                'jumlah_persekot' => numfmt_format($this->currencyfmt,$d['jumlah']),
+                'keterangan' => $d['keterangan'],
             ];
             array_push($ins, $ob);
+
+            $d['rekening'] = $beban['rekening'];
+            array_push($savedata, $d);
         }
-        */
         
         //$model->insert($this->request->getPost('data'));
-        $model->insertBatch($this->request->getPost('successdata'));
+        $model->insertBatch($savedata);
 
-        $data['data'] = $this->request->getPost('successdata');
+        $data['data'] = $ins;
         $data['waktu'] = date("Y-m-d H:i:s");
         $data['json'] = json_encode($data['data']);
         $this->page('penyelesaian_submit', $data);
@@ -52,6 +61,9 @@ class Penyelesaian extends BaseController
     public function print(){
         $mans = new AdminModel();
         $mans = $mans->builder()->select('area_manager, pj_aosm')->get()->getRowArray();
-        echo view('prints/penyelesaian', ['data' => $this->request->getPost('data'), 'man' => $mans]);
+        $senddata = ['data' => json_decode($this->request->getPost('data'), true),
+        'man' => $mans,
+        'waktu' => $this->request->getPost('waktu')];
+        echo view('prints/penyelesaian', $senddata);
     }
 }

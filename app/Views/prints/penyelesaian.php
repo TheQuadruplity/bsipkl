@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>JURNAL</title>
+    <title>PENYELESAIAN</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url() ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,24 +24,29 @@
 
 <body>
     <h1 style="text-align: center;">Penyelesaian Persekot</h1>
-    <h3 style="text-align: center;">Waktu: <?= $data['waktu']?></h3>
+    <h3 style="text-align: center;">Waktu: <?= $waktu ?></h3>
     <table style="width: 100%; border-collapse: collapse; border-style: solid;" border="1">
         <thead>
             <tr>
+                <th>Rekening Beban</th>
                 <th>Beban</th>
-                <th>Persekot</th>
-                <th>Rekening</th>
-                <th>Jumlah</th>
+                <th>Debet</th>
+                <th>Rekening Persekot</th>
+                <th>Narasi</th>
+                <th>Kredit</th>
                 <th>Keterangan</th>
             </tr>
         </thead>
-        <tbody>
-            <?php foreach($data['data'] as $d): ?>
+        <tbody id="listbeban" name="lists">
+            <?php foreach($data as $d): ?>
+                
                 <tr>
-                    <td><?= esc($d['nbeban']) ?></td>
-                    <td><?= esc($d['npersekot']) ?></td>
-                    <td><?= esc($d['rekening']) ?></td>
-                    <td><?= esc($d['jumlah']) ?></td>
+                    <td><?= esc($d['rekening_beban']) ?></td>
+                    <td><?= esc($d['nama_beban']) ?></td>
+                    <td><?= esc($d['jumlah_beban']) ?></td>
+                    <td><?= esc($d['rekening_persekot']) ?></td>
+                    <td><?= esc($d['narasi_persekot']) ?></td>
+                    <td><?= esc($d['jumlah_persekot']) ?></td>
                     <td><?= esc($d['keterangan']) ?></td>
                 </tr>
             <?php endforeach ?>

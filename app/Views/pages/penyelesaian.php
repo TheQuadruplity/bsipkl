@@ -69,7 +69,7 @@
     </div>
     <div class="card-footer">
         <form method="POST" action="<?= base_url() ?>/penyelesaian/save" id="f2">
-            <input type="hidden" name="successdata[]" id="sdat">
+            <input type="hidden" name="successdata" id="sdat">
             <button  class="btn btn-primary" id="penyelesaian_simpan">Simpan</button>
         </form>
     </div>
@@ -83,7 +83,7 @@
         e.preventDefault();
         f = $('form')[0];
         if(f.checkValidity()){
-            t = $('#listbeban')[0];
+            /*t = $('#listbeban')[0];
             r = t.insertRow();
             d = r.insertCell()
             d.innerHTML = f['beban'].selectedOptions[0].innerHTML;
@@ -95,18 +95,44 @@
             r.insertCell().innerHTML = f['jumlah'].value;
             r.insertCell().innerHTML = f['keterangan'].value;
             r.insertCell().innerHTML = '<button class="btn btn-danger hapus" onclick="this.parentElement.parentElement.remove()"><i class="fa fa-times"></i></button>';
+            */
+            t = $('#listbeban')[0];
+            ftext = `<tr id="list${c}">
+            <td>${f['beban'].selectedOptions[0].innerHTML}</td>
+            <td>${f['persekot'].selectedOptions[0].innerHTML}</td>
+            <td>${f['rekening'].value}</td>
+            <td>${f['jumlah'].value}</td>
+            <td>${f['keterangan'].value}</td>
+            <td><button class="btn btn-danger hapus" onclick="hapus(${c})"><i class="fa fa-times"></i></button></td>
+            </tr>`;
+            t.innerHTML += ftext;
+
+            data = {
+                beban: f['beban'].value,
+                persekot: f['persekot'].value,
+                jumlah: f['jumlah'].value,
+                keterangan: f['keterangan'].value,
+            };
+            list_selesai[c++] = data;
         }
         else{
             f.reportValidity();
         }
     });
 
+    function hapus(id){
+        a = document.getElementById('list'+id);
+        a.remove()
+        delete list_selesai[id];
+    }
+
     $('#penyelesaian_simpan').click(function(e){
         e.preventDefault();
         t = $('#listbeban')[0];
         
         if(t.childElementCount){
-            function escapeHtml(unsafe)
+            this.setCustomValidity('');
+/*             function escapeHtml(unsafe)
             {
                 return unsafe
                     .replace(/&/g, "&amp;")
@@ -115,7 +141,6 @@
                     .replace(/"/g, "&quot;")
                     .replace(/'/g, "&#039;");
             }
-            this.setCustomValidity('');
             dat = [];
             for(i = 0; i < t.childElementCount; i++){
                 row = t.children[i];
@@ -128,8 +153,9 @@
                     '<input type="hidden" name="successdata['+i+'][npersekot]" value="'+row.children[1].innerHTML+'">';
                 $("#f2")[0].innerHTML += inner;
                 dat.push(d);
-            }
+            } */
 
+            $("#sdat")[0].value = JSON.stringify(list_selesai);
             $("#f2")[0].submit();
         }
         else{
