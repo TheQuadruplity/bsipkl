@@ -63,7 +63,8 @@ class JenisPersekot extends BaseController
         return redirect()->to(base_url().'/jenispersekot');
     }
 
-    public function mutasi($id){
+
+    private function rekening($id){
         $jenismodel = new JenisPersekotModel();
         $pmodel = new PersekotModel();
         $bmodel = new PenyelesaianModel();
@@ -108,8 +109,20 @@ class JenisPersekot extends BaseController
 
         $np = $jenismodel->find($id);
 
-        $this->page('mutasi_persekot', ['data' => $data, 'nama' => $np['nama'], 'id' => $id]);
+        return ['data' => $data, 'nama' => $np['nama'], 'id' => $id];
     }
 
+    public function mutasi($id){
+        $this->page('mutasi_persekot', $this->rekening($id));
+    }
+
+    public function printexcel($id){
+        $jenis = new JenisPersekotModel();
+        $nama = $jenis->find($id)['nama'];
+        $filename = 'Jenis_'.$nama.'_'.date('_YmdHis').'.xls';
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=$filename");
+        echo view('prints/jenis_persekot_excel', $this->rekening($id));
+    }
 
 }
