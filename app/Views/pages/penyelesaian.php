@@ -20,10 +20,10 @@
             <div class="form-row">
                 <div class="form-group col">
                     <label for="jenis">Persekot</label>
-                    <select class="form-control" id="persekot" name="persekot" placeholder="Pilih persekot yang ingin diselesaikan" onchange="$('#sisa')[0].value=this.selectedOptions[0].dataset['sisa']" required>
+                    <select class="form-control" id="persekot" name="persekot" placeholder="Pilih persekot yang ingin diselesaikan" required>
                         <option value="" data-sisa="-">-- Pilih Persekot --</option>
                         <?php foreach($persekot as $j): ?>
-                        <option value="<?= esc($j['id']) ?>" data-sisa='<?= esc($j['sisa'])?>'><?= esc('PL-'.str_pad($j['id'], 8, '0', STR_PAD_LEFT).' : '.$j['narasi']) ?></option>
+                        <option id="persekot-<?= esc($j['id']) ?>" value="<?= esc($j['id']) ?>" data-sisa='<?= esc($j['sisa'])?>'><?= esc('PL-'.str_pad($j['id'], 8, '0', STR_PAD_LEFT).' : '.$j['narasi']) ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -81,39 +81,38 @@
 
     $('#tambah').click(function(e){
         e.preventDefault();
+        $('#jumlah')[0].setCustomValidity('');
         f = $('form')[0];
         if(f.checkValidity()){
-            /*t = $('#listbeban')[0];
-            r = t.insertRow();
-            d = r.insertCell()
-            d.innerHTML = f['beban'].selectedOptions[0].innerHTML;
-            d.value = f['beban'].value;
-            d = r.insertCell()
-            d.innerHTML = f['persekot'].selectedOptions[0].innerHTML;
-            d.value = f['persekot'].value;
-            r.insertCell().innerHTML = f['rekening'].value;
-            r.insertCell().innerHTML = f['jumlah'].value;
-            r.insertCell().innerHTML = f['keterangan'].value;
-            r.insertCell().innerHTML = '<button class="btn btn-danger hapus" onclick="this.parentElement.parentElement.remove()"><i class="fa fa-times"></i></button>';
-            */
-            t = $('#listbeban')[0];
-            ftext = `<tr id="list${c}">
-            <td>${f['beban'].selectedOptions[0].innerHTML}</td>
-            <td>${f['persekot'].selectedOptions[0].innerHTML}</td>
-            <td>${f['rekening'].value}</td>
-            <td>${f['jumlah'].value}</td>
-            <td>${f['keterangan'].value}</td>
-            <td><button class="btn btn-danger hapus" onclick="hapus(${c})"><i class="fa fa-times"></i></button></td>
-            </tr>`;
-            t.innerHTML += ftext;
+            if((+$('#persekot')[0].selectedOptions[0].dataset['sisa']) >= (+$('#jumlah')[0].value)){
+                r = rupiah(f['jumlah'].value);
+                t = $('#listbeban')[0];
+                ftext = `<tr id="list${c}" data-jumlah="${f['jumlah'].value}">
+                <td>${f['beban'].selectedOptions[0].innerHTML}</td>
+                <td>${f['persekot'].selectedOptions[0].innerHTML}</td>
+                <td>${f['rekening'].value}</td>
+                <td>${r}</td>
+                <td>${f['keterangan'].value}</td>
+                <td><button class="btn btn-danger hapus" onclick="hapus(${c})"><i class="fa fa-times"></i></button></td>
+                </tr>`;
+                t.innerHTML += ftext;
 
-            data = {
-                beban: f['beban'].value,
-                persekot: f['persekot'].value,
-                jumlah: f['jumlah'].value,
-                keterangan: f['keterangan'].value,
-            };
-            list_selesai[c++] = data;
+                data = {
+                    beban: f['beban'].value,
+                    persekot: f['persekot'].value,
+                    jumlah: f['jumlah'].value,
+                    keterangan: f['keterangan'].value,
+                };
+                list_selesai[c++] = data;
+
+                $('#persekot')[0].selectedOptions[0].dataset['sisa'] -= f['jumlah'].value;
+                $('#sisa')[0].value = rupiah($('#persekot')[0].selectedOptions[0].dataset['sisa']);
+            }
+            else{
+                $('#jumlah')[0].setCustomValidity('Jumlah melebihi sisa');
+                f.reportValidity();
+                console.log("lebih");
+            }
         }
         else{
             f.reportValidity();
@@ -122,7 +121,10 @@
 
     function hapus(id){
         a = document.getElementById('list'+id);
-        a.remove()
+        s = +$('#persekot')[0].selectedOptions[0].dataset['sisa']
+        $('#persekot')[0].selectedOptions[0].dataset['sisa'] = +a.dataset['jumlah']+s;
+        $('#sisa')[0].value = rupiah($('#persekot')[0].selectedOptions[0].dataset['sisa']);
+        a.remove();
         delete list_selesai[id];
     }
 
@@ -163,5 +165,9 @@
             this.reportValidity();
         }
 
+    })
+
+    $('#persekot').change(function(){
+        $('#sisa')[0].value = rupiah(this.selectedOptions[0].dataset['sisa']);
     })
 </script>

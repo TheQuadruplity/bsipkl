@@ -20,7 +20,6 @@ class Penyelesaian extends BaseController
         where('sisa > 0')->
         get()->getResultArray();
         $beban = $bebanmodel->findAll();
-        for($i=0; $i<sizeof($persekot); $i++) $persekot[$i]['sisa'] = numfmt_format($this->currencyfmt, $persekot[$i]['sisa']);
         $this->page('penyelesaian', 
         ['persekot' => $persekot, 'beban' => $beban]);
     }
