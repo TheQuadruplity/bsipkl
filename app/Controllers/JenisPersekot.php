@@ -24,7 +24,8 @@ class JenisPersekot extends BaseController
         if($this->request->getMethod() == 'post'){
             $model = new JenisPersekotModel();
             $model->save([
-                'nama' => $this->request->getPost('nama')
+                'nama' => $this->request->getPost('nama'),
+                'rekening' => $this->request->getPost('rekening')
             ]);
             session()->set('swal',[
                 'title'=>'Berhasil',
@@ -51,7 +52,8 @@ class JenisPersekot extends BaseController
         if($this->request->getMethod() == 'post'){
             $model = new JenisPersekotModel();
             $model->update($this->request->getPost('id'), [
-                'nama' => $this->request->getPost('nama')
+                'nama' => $this->request->getPost('nama'),
+                'rekening' => $this->request->getPost('rekening')
             ]);
             session()->set('swal',[
                 'title'=>'Berhasil',

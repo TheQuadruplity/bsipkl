@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\AdminModel;
 use App\Models\BebanModel;
+use App\Models\JenisPersekotModel;
 use App\Models\PenyelesaianModel;
 use App\Models\PersekotModel;
 use App\Models\RekeningModel;
@@ -28,17 +29,19 @@ class Penyelesaian extends BaseController
         $model = new PenyelesaianModel();
         $model2 = new BebanModel();
         $model3 = new PersekotModel();
+        $model4 = new JenisPersekotModel();
 
         $ins = [];
         $savedata = [];
         foreach(json_decode($this->request->getPost('successdata'), true) as $d){
             $beban = $model2->find($d['beban']);
             $persekot = $model3->find($d['persekot']);
+            $jenis = $model4->find($persekot['jenis']);
             $ob = [
                 'rekening_beban' => $beban['rekening'], 
                 'nama_beban' => $beban['nama'], 
                 'jumlah_beban' => numfmt_format($this->currencyfmt,$d['jumlah']), 
-                'rekening_persekot' => $persekot['id'], 
+                'rekening_persekot' => $jenis['rekening'], 
                 'narasi_persekot' => $persekot['narasi'], 
                 'jumlah_persekot' => numfmt_format($this->currencyfmt,$d['jumlah']),
                 'keterangan' => $d['keterangan'],

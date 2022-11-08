@@ -17,6 +17,7 @@
                     <tr>
                         <th style="width: 3%;">No.</th>
                         <th>Nama Persekot</th>
+                        <th>Rekening</th>
                         <th>Mutasi Persekot</th>
                         <th>Action</th>
                     </tr>
@@ -26,6 +27,7 @@
                     <tr>
                         <td><?= esc($i+1) ?></td>
                         <td><?= esc($d['nama']) ?></td>
+                        <td><?= esc($d['rekening']) ?></td>
                         <td class="text-center"><a href="<?= base_url('jenispersekot/mutasi/'.$d['id'])?>" class="btn btn-primary btn-icon-split btn-sm"><span class="icon text-white-50"><i class="fas fa-scroll"></i></span><span class="text">Lihat</span></a></td>
                         <td class="text-center">
                         <?php if(isset($count[$d['id']])): ?>
@@ -38,7 +40,7 @@
                               <i class="fas fa-trash"></i></span><span class="text">Hapus</span></button>
                         <?php endif ?>
                           <button type="button" class="btn btn-warning btn-icon-split btn-sm edit" data-toggle="modal" data-target="#editModal" data-id='<?= esc($d['id']) ?>' 
-                            data-nama='<?= esc($d['nama']) ?>'><span class="icon text-white-50">
+                            data-nama='<?= esc($d['nama']) ?>' data-rekening='<?= esc($d['rekening']) ?>'><span class="icon text-white-50">
                           <i class="fas fa-pencil-alt"></i></span><span class="text">Edit</span></button>
                         </td>
                     </tr>
@@ -63,7 +65,11 @@
       <form action="<?= base_url() ?>/jenispersekot/save" method="POST">
         <div class="form-group">
             <label for="nama">Nama Jenis Persekot</label>
-            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama jenis persekot" required>
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama jenis persekot" maxlength="50" required>
+        </div>
+        <div class="form-group">
+            <label for="rekening">Nomor Rekening</label>
+            <input type="text" class="form-control" id="rekening" name="rekening" placeholder="Masukkan nomor rekening" maxlength="20" required>
         </div>
       </div>
       <div class="modal-footer">
@@ -90,7 +96,9 @@
         <div class="form-group">
             <input type="hidden" name="id" id="editid" value="">
             <label for="nama">Nama Jenis Persekot</label>
-            <input type="text" class="form-control" id="editnama" name="nama" placeholder="Masukkan nama beban" required>
+            <input type="text" class="form-control" id="editnama" name="nama" placeholder="Masukkan nama beban" maxlength="50" required>
+            <label for="rekening">Nomor Rekening</label>
+            <input type="text" class="form-control" id="editrekening" name="rekening" placeholder="Masukkan nomor rekening" maxlength="20" required>
         </div>
       </div>
       <div class="modal-footer">
@@ -122,7 +130,7 @@
         </div>
     </div>
 
-<script>$('.edit').click(function (e) { $('#editnama').val(this.dataset['nama']);$('#editid').val(this.dataset['id']);});</script>
+<script>$('.edit').click(function (e) { $('#editnama').val(this.dataset['nama']);$('#editrekening').val(this.dataset['rekening']);$('#editid').val(this.dataset['id']);});</script>
 <script>$('.delete').click(function(){$('#deleteloc').attr('href', '<?= base_url('jenispersekot/delete')?>/'+$(this).val())})</script>
 
 <script>$(function () {$('[data-toggle="tooltip"]').tooltip()})</script>
