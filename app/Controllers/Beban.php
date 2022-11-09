@@ -91,4 +91,16 @@ class Beban extends BaseController
         header("Content-Disposition: attachment; filename=$filename");
         echo view('prints/rekening_excel', ['data' => $data, 'sum' => $sum]);
     }
+
+    public function minisave(){
+        if($this->request->getMethod() == 'post'){
+            $model = new BebanModel();
+            $model->save([
+                'nama' => $this->request->getPost('nama'),
+                'rekening' => $this->request->getPost('rekening')
+            ]);
+
+            echo $model->getInsertID();
+        }
+    }
 }

@@ -127,4 +127,15 @@ class JenisPersekot extends BaseController
         echo view('prints/jenis_persekot_excel', $this->rekening($id));
     }
 
+    public function minisave(){
+        if($this->request->getMethod() == 'post'){
+            $model = new JenisPersekotModel();
+            $model->save([
+                'nama' => $this->request->getPost('nama'),
+                'rekening' => $this->request->getPost('rekening')
+            ]);
+
+            echo $model->getInsertID();
+        }
+    }
 }
