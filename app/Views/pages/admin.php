@@ -17,12 +17,40 @@
   </div>
 </div>
 
-<div class="alert alert-warning" role="alert">
-    <strong>Anda akan diminta memasukkan <b>password saat ini</b> pada saat menyimpan perubahan akun</strong>
-</div>
 <!--p class="mb-4">Berikut adalah database Jenis Persekot</p-->
-
+ 
 <!-- <div class="container my-5"> -->
+  <div class="card mb-5">
+    <div class="card-header">Riwayat</div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-9">
+            <div class="row mb-3">
+              <div class="col"><label for="hist_start">mulai</label><input type="date" name="hist_start" id="hist_start" class="hist form-control" value="<?= $date?>"></div>
+              <div class="col"><label for="hist_end">akhir</label><input type="date" name="hist_end" id="hist_end" class="hist form-control" value="<?= $date?>"></div>
+            </div>
+            <div class="row justify-content-center">
+              <a id="hist_button" href="<?= base_url("admin/history/$date/$date") ?>" class="btn btn-primary btn-icon-split mr-3"><span class="icon text-white-50">
+              <i class="fas fa-file-excel"></i></span><span class="text">Simpan riwayat ke excel</span></a>
+              <button type="button" class="btn btn-secondary btn-icon-split" data-toggle="modal" data-target="#guide">
+              <span class="icon text-white-50"><i class="fas fa-question-circle"></i></span><span class="text">Petunjuk Kode</span></a>
+            </div>
+          </div>
+          <div class="col justify-content-center text-center my-auto">
+            <button class="btn btn-danger btn-icon-split" onclick="del_item()"><span class="icon text-white-50">
+            <i class="fas fa-trash"></i></span><span class="text">Hapus Seluruh Riwayat</span></button>
+          </div>
+        </div>
+        
+        
+        
+      </div>
+  </div>
+
+  <div class="alert alert-warning" role="alert">
+    <strong>Anda akan diminta memasukkan <b>password saat ini</b> pada saat menyimpan perubahan akun</strong>
+  </div>
+
   <div class="card mb-5">
     <form name="saveusername" action="">
       <div class="card-header">Ubah Username</div>
@@ -108,6 +136,76 @@
   </div>
 </div>
 
+<div class="modal fade" id="guide" tabindex="-1" aria-labelledby="guidemodal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="guidemodal">Petunjuk Kode</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row-2">
+          <div class="col">00</div>
+          <div class="col">custom baru</div>
+        </div>
+        <div class="row-2">
+          <div class="col">01</div>
+          <div class="col">Pengambilan baru</div>
+        </div>
+        <div class="row-2">
+          <div class="col">02</div>
+          <div class="col">Penyelesaian baru</div>
+        </div>
+        <div class="row-2">
+          <div class="col">03</div>
+          <div class="col">Jenis Persekot baru</div>
+        </div>
+        <div class="row-2">
+          <div class="col">04</div>
+          <div class="col">Beban baru</div>
+        </div>
+        <div class="row-2">
+          <div class="col">16</div>
+          <div class="col">custom update</div>
+        </div>
+        <div class="row-2">
+          <div class="col">19</div>
+          <div class="col">Jenis Persekot update</div>
+        </div>
+        <div class="row-2">
+          <div class="col">20</div>
+          <div class="col">Beban update</div>
+        </div>
+        <div class="row-2">
+          <div class="col">32</div>
+          <div class="col">custom hapus</div>
+        </div>
+        <div class="row-2">
+          <div class="col">33</div>
+          <div class="col">Pengambilan hapus</div>
+        </div>
+        <div class="row-2">
+          <div class="col">34</div>
+          <div class="col">Penyelesaian hapus</div>
+        </div>
+        <div class="row-2">
+          <div class="col">35</div>
+          <div class="col">Jenis Persekot hapus</div>
+        </div>
+        <div class="row-2">
+          <div class="col">36</div>
+          <div class="col">Beban hapus</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   $("#saveusername").click(function(){
     if(document.saveusername.reportValidity()){
@@ -142,5 +240,31 @@
 
   $('#tahun').change(function(){
     $.post('<?= base_url() ?>/admin/annual/'+this.value);
+  })
+
+  function del_item(){
+        Swal.fire({
+            title: 'Hapus?',
+            icon: 'warning',
+            text: 'Apakah yakin menghapus seluruh riwayat?\n(simpan dahulu sebelum hapus)',
+            showCancelButton: true,
+            confirmButtonText: 'Ya',
+            confirmButtonColor: '#d33',
+            cancelButtonText: 'Tidak',
+            reverseButtons: true,
+            showLoaderOnConfirm: true,
+            preConfirm: () => {
+                return $.post('<?=base_url('admin/history_delete')?>')
+                .done(()=>{
+                    location.reload();
+                })
+                .catch(() => {
+                    Swal.showValidationMessage(`Error, riwayat gagal dihapus`)
+                })
+            }
+        })
+    }
+  $('.hist').change(function(){
+    $('#hist_button')[0].href = "<?= base_url("admin/history") ?>/"+$('#hist_start')[0].value+"/"+$('#hist_end')[0].value;
   })
 </script>

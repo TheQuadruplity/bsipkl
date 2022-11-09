@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\AdminModel;
+use App\Models\RiwayatModel;
 
 class Admin extends BaseController
 {
@@ -15,7 +16,12 @@ class Admin extends BaseController
         $loweryear = 2001;
         $ys = [];
         while($year >= $loweryear) array_push($ys, $year--);
-        $this->page('admin', ['data' => $data, 'msg' => $s->getFlashdata('msg'), 'years' => $ys, 'year' => session()->get('ann')]);
+        
+        $this->page('admin', ['data' => $data, 
+                              'msg' => $s->getFlashdata('msg'), 
+                              'years' => $ys, 
+                              'year' => session()->get('ann'), 
+                              'date' => date('Y-m-d')]);
     }
 
     public function validatePass($pass = ""){
@@ -61,5 +67,34 @@ class Admin extends BaseController
     public static function Annual($year)
     {
         session()->set('ann', $year);
+    }
+
+    public function history_delete(){
+        if($this->request->getMethod() == 'post'){
+            $model = new RiwayatModel();
+            $model->builder()->emptyTable();
+            $model->insert(['tipe' => 0, 'keterangan' => 'terakhir hapus']);
+            session()->set('swal',[
+                'title'=>'Berhasil',
+                'text'=>'Riwayat Berhasil Dihapus!',
+                'icon'=>'success',
+            ]);
+        }
+    }
+
+    public function history($start, $end){
+        $model = new RiwayatModel();
+        $end = date('Y-m-d', strtotime($end.' +1 day'));
+        $res = $model->builder()
+        ->select('*')
+        ->where("waktu >= '$start' and waktu <= '$end'")
+        ->orderBy('waktu', 'ASC')->get()->getResultArray();
+
+        $data = $res;
+
+        $filename = 'Riwayat_'.date('YmdHis').'.xls';
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=$filename");
+        echo view('prints/riwayat', ['data' => $data]);
     }
 }
