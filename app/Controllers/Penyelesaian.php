@@ -68,4 +68,27 @@ class Penyelesaian extends BaseController
         'waktu' => $this->request->getPost('waktu')];
         echo view('prints/penyelesaian', $senddata);
     }
+
+    public function printattime($datetime){
+        $model = new PenyelesaianModel();
+        $res = $model->builder()->select(
+            "penyelesaian.waktu as waktu, penyelesaian.jumlah as jumlah, beban.nama as nama_beban, beban.rekening as rekening_beban,
+            persekot.narasi as narasi_persekot, jenis_persekot.rekening as rekening_persekot, penyelesaian.keterangan as keterangan"
+        )
+        ->join("beban", "beban.id = penyelesaian.beban")
+        ->join("persekot", "persekot.id = penyelesaian.persekot")
+        ->join("jenis_persekot", "jenis_persekot.id = persekot.jenis")
+        ->where("penyelesaian.waktu = '$datetime'")->get()->getResultArray();
+        foreach($res as $i => $d){
+            $res[$i]['jumlah_beban'] = numfmt_format($this->currencyfmt,$d['jumlah']);
+            $res[$i]['jumlah_persekot'] = numfmt_format($this->currencyfmt,$d['jumlah']);
+        }
+
+        $mans = new AdminModel();
+        $mans = $mans->builder()->select('area_manager, pj_aosm')->get()->getRowArray();
+        $senddata = ['data' => $res,
+        'man' => $mans,
+        'waktu' => $datetime];
+        echo view('prints/penyelesaian', $senddata);
+    }
 }

@@ -19,6 +19,7 @@
                         <th>Persekot</th>
                         <th>Jumlah</th>
                         <th>Keterangan</th>
+                        <th>Print Memo</th>
                         <th>Batal</th>
                     </tr>
                 </thead>
@@ -31,6 +32,8 @@
                         <td><?= esc($d['nomorpersekot'].' - '.$d['persekot']) ?></td>
                         <td class="text-right"><?= esc($d['jumlah']) ?></td>
                         <td><?= esc($d['keterangan']) ?></td>
+                        <td class="text-center"><a href="<?= base_url('penyelesaian/printattime/'.urlencode($d['waktu']))?>" class="btn btn-primary btn-sm" target="_blank">
+                            <i class="fa fa-print" aria-hidden="true"></i></a></td>
                         <td class="text-center"><button class="btn btn-danger btn-sm" onclick="return del_item(this, <?=$d['id']?>)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                     </tr>
                     <?php endforeach ?>
