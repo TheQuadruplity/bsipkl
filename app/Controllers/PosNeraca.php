@@ -25,6 +25,7 @@ class PosNeraca extends BaseController
         $mans = new AdminModel();
         $mans = $mans->builder()->select('area_manager, pj_aosm')->get()->getRowArray();
         $data = $model->memoPersekot($id);
+        $data['terbilang'] = $this->terbilang($data['jumlah']);
         $data['jumlah'] = numfmt_format($this->currencyfmt, $data['jumlah']);
         $reg = substr($data['id']+10000, 1).'/'.
             substr($data['idjenis']+100, 1).'/'.
@@ -70,5 +71,42 @@ class PosNeraca extends BaseController
         header("Content-type: application/vnd-ms-excel");
         header("Content-Disposition: attachment; filename=$filename");
         echo view('prints/persekot_excel', ['data' => $data]);
+    }
+
+    private function terbilang($n){
+        if($n == 0) return 'nol';
+        $num = ['nol', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan'];
+        $ten = ['sepuluh', 'sebelas', 'dua belas', 'tiga belas', 'empat belas', 'lima belas', 'enam belas', 'tujuh belas', 'delapan belas', 'sembilan belas'];
+        $level = ['', 'ribu ', 'juta ', 'milyar '];
+
+        $sep = [];
+        while($n != 0){
+            array_push($sep, $n%1000);
+            $n = floor($n / 1000);
+        }
+        $t = '';
+
+        for($l = sizeof($sep)-1; $l >= 0; $l--){
+            if($sep[$l] == 0) continue;
+            if($l == 1 && $sep[$l] == 1) {$t .= 'seribu '; continue;}
+            $t2 = '';
+            $ar = str_split($sep[$l]);
+            $ar = array_reverse($ar);
+            if(isset($ar[2])){
+                if($ar[2] == 1)$t2 .= 'seratus ';
+                else $t2 .= $num[$ar[2]].' ratus ';
+            }
+            $belas = false;
+            if(isset($ar[1])){
+                if($ar[1] == 1) {$t2 .= $ten[$ar[0]].' '; $belas = true;}
+                else if($ar[1] != 0) $t2 .= $num[$ar[1]].' puluh ';
+            }
+            if($ar[0] != 0 && !$belas) $t2 .= $num[$ar[0]].' ';
+            
+            $t .= $t2.$level[$l];
+        }
+        $t.='rupiah';
+
+        return $t;
     }
 }

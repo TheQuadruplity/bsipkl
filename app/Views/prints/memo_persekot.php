@@ -248,6 +248,18 @@ dengan rincian :</span></p>
   lang=EN-US>: <?=$data['jumlah']?></span></p>
   </td>
  </tr>
+ <tr style='height:21.1pt'>
+  <td width=95 style='width:70.9pt;padding:0cm 5.4pt 0cm 5.4pt;height:21.1pt'>
+  <p class=Bodytext10 style='margin-top:0cm;margin-right:2.0pt;margin-bottom:
+  0cm;margin-left:0cm;line-height:normal;background:transparent'><span
+  lang=EN-US>Terbilang</span></p>
+  </td>
+  <td width=522 style='width:391.35pt;padding:0cm 5.4pt 0cm 5.4pt;height:21.1pt'>
+  <p class=Bodytext10 style='margin-top:0cm;margin-right:2.0pt;margin-bottom:
+  0cm;margin-left:0cm;line-height:normal;background:transparent'><span
+  lang=EN-US>: <?=$data['terbilang']?></span></p>
+  </td>
+ </tr>
  <tr style='height:20.75pt'>
   <td width=95 style='width:70.9pt;padding:0cm 5.4pt 0cm 5.4pt;height:20.75pt'>
   <p class=Bodytext10 style='margin-top:0cm;margin-right:2.0pt;margin-bottom:
