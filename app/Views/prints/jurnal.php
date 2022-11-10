@@ -42,7 +42,7 @@
                 <tr>
                     <td><?= $i ?></td>
                     <td><?= esc($d['waktu']) ?></td>
-                    <td><?= 'PL-'.str_pad($d['persekot'], 8, '0', STR_PAD_LEFT);?></td>
+                    <td><?= esc($d['nomor'])?></td>
                     <td><?= esc($d['nama']) ?></td>
                     <td><?= esc($d['debit']) ?></td>
                     <td><?= esc($d['kredit']) ?></td>

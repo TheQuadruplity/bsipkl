@@ -16,6 +16,7 @@ class Pengambilan extends BaseController
     public function save(){
         $model = new PersekotModel();
         $data = [
+            'nomor' => $this->request->getPost('nomor'), 
             'narasi' => $this->request->getPost('narasi'), 
             'jenis' => $this->request->getPost('jenis'), 
             'jumlah' => $this->request->getPost('jumlah'), 

@@ -7,6 +7,10 @@
             <div class="col">: <?=$data['jenis']?></div>
         </div>
         <div class="row">
+            <div class="col">Jenis Persekot</div>
+            <div class="col">: <?=$data['nomor']?></div>
+        </div>
+        <div class="row">
             <div class="col">Narasi</div>
             <div class="col">: <?=$data['narasi']?></div>
         </div>

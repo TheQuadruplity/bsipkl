@@ -72,7 +72,7 @@ class JenisPersekot extends BaseController
         $bmodel = new PenyelesaianModel();
 
         $data = [];
-        $res1 = $pmodel->builder()->select("id, narasi, waktu, jumlah, keterangan")
+        $res1 = $pmodel->builder()->select("id, narasi, waktu, jumlah, keterangan, nomor")
         ->where('jenis', $id)
         ->orderBy('waktu', 'ASC')->get()->getResultArray();
         $saldo = 0;
@@ -85,7 +85,7 @@ class JenisPersekot extends BaseController
 
             $rdat = [
                 'waktu' => $r['waktu'],
-                'no' => 'PL-'.str_pad($r['id'], 8, '0', STR_PAD_LEFT),
+                'no' => $r['nomor'],
                 'nama' => $r['narasi'],
                 'd' => numfmt_format($this->currencyfmt, $r['jumlah']),
                 'k' => '-',
@@ -98,7 +98,7 @@ class JenisPersekot extends BaseController
                 $saldo += $r2['jumlah'];
                 $rdat = [
                     'waktu' => $r2['waktu'],
-                    'no' => 'PL-'.str_pad($r['id'], 8, '0', STR_PAD_LEFT),
+                    'no' => $r['nomor'],
                     'nama' => $r2['nama'],
                     'd' => '-',
                     'k' => numfmt_format($this->currencyfmt, $r2['jumlah']),

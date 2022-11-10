@@ -15,7 +15,6 @@ class PosNeraca extends BaseController
             $data[$i]['start'] = $data[$i]['sisa']<$data[$i]['jumlah']?'':'table-primary';
             $data[$i]['success'] = $data[$i]['sisa']<=0?'table-success':'';
             $data[$i]['jumlah'] = numfmt_format($this->currencyfmt, $data[$i]['jumlah']);
-            $data[$i]['nomor'] = 'PL-'.str_pad($data[$i]['id'], 8, '0', STR_PAD_LEFT);
         }
         $this->page('pos_neraca', ['data' => $data]);
     }
@@ -41,7 +40,6 @@ class PosNeraca extends BaseController
         $data = $model->find($id);
         $data['selesai'] = $data['sisa']<=0?true:false;
         $data['dimulai'] = $data['sisa']<$data['jumlah']?true:false;
-        $data['nomor'] = 'PL-'.str_pad($data['id'], 8, '0', STR_PAD_LEFT);
         $data['jumlah'] = numfmt_format($this->currencyfmt, $data['jumlah']);
         $data['sisa'] = numfmt_format($this->currencyfmt, $data['sisa']);
         $data['jenis'] = $model2->find($data['jenis'])['nama'];
@@ -64,9 +62,6 @@ class PosNeraca extends BaseController
     public function printexcel(){
         $model = new PersekotModel();
         $data = $model->getPersekot();
-        for($i = 0; $i < sizeof($data); $i++){
-            $data[$i]['nomor'] = 'PL-'.str_pad($data[$i]['id'], 8, '0', STR_PAD_LEFT);
-        }
         $filename = 'Persekot_'.date('YmdHis').'.xls';
         header("Content-type: application/vnd-ms-excel");
         header("Content-Disposition: attachment; filename=$filename");

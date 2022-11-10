@@ -18,6 +18,10 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="narasi">No. Persekot</label>
+                    <input type="text" class="form-control" id="nomor" name="nomor" placeholder="Bisa berisi karakter dan simbol" required maxlength="15">
+                </div>
+                <div class="form-group">
                     <label for="narasi">Narasi</label>
                     <input type="text" class="form-control" id="narasi" name="narasi" placeholder="Masukkan narasi" required maxlength="50">
                 </div>

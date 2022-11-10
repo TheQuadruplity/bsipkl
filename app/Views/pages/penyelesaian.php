@@ -9,7 +9,7 @@
                     <select class="form-control" id="persekot" name="persekot" placeholder="Pilih persekot yang ingin diselesaikan" required>
                         <option value="" data-sisa="-">-- Pilih Persekot --</option>
                         <?php foreach($persekot as $j): ?>
-                        <option id="persekot-<?= esc($j['id']) ?>" value="<?= esc($j['id']) ?>" data-sisa='<?= esc($j['sisa'])?>'><?= esc('PL-'.str_pad($j['id'], 8, '0', STR_PAD_LEFT).' : '.$j['narasi']) ?></option>
+                        <option id="persekot-<?= esc($j['id']) ?>" value="<?= esc($j['id']) ?>" data-sisa='<?= esc($j['sisa'])?>'><?= esc($j['nomor'].' : '.$j['narasi']) ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>

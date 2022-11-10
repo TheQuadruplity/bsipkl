@@ -16,7 +16,7 @@ class PosBeban extends BaseController
         foreach($rekening as $r) $kvrekening[$r['id']] = ['nama' => $r['nama'], 'rekening' => $r['rekening']];
         foreach($data as $i => $d){
             $data[$i]['jumlah'] = numfmt_format($this->currencyfmt, $d['jumlah']);
-            $data[$i]['nomorpersekot'] = 'PL-'.str_pad($d['nomorpersekot'], 8, '0', STR_PAD_LEFT);
+            $data[$i]['nomorpersekot'] = $d['nomorpersekot'];
             $data[$i]['namabeban'] = $kvrekening[$d['beban']]['nama'];
             $data[$i]['rekening'] = $kvrekening[$d['beban']]['rekening'];
         }
@@ -45,7 +45,7 @@ class PosBeban extends BaseController
         foreach($rekening as $r) $kvrekening[$r['id']] = ['nama' => $r['nama'], 'rekening' => $r['rekening']];
         foreach($data as $i => $d){
             $data[$i]['jumlah'] = numfmt_format($this->currencyfmt, $d['jumlah']);
-            $data[$i]['nomorpersekot'] = 'PL-'.str_pad($d['nomorpersekot'], 8, '0', STR_PAD_LEFT);
+            $data[$i]['nomorpersekot'] = $d['nomorpersekot'];
             $data[$i]['namabeban'] = $kvrekening[$d['beban']]['nama'];
             $data[$i]['rekening'] = $kvrekening[$d['beban']]['rekening'];
         }
