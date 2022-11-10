@@ -140,6 +140,18 @@
 
                 $('#persekot')[0].selectedOptions[0].dataset['sisa'] -= f['jumlah'].value;
                 $('#sisa')[0].value = rupiah($('#persekot')[0].selectedOptions[0].dataset['sisa']);
+
+                $('#jumlah')[0].value = '';
+                $('#keterangan')[0].value = '';
+
+                Swal.fire({
+                    title: "Data berhasil ditambah!",
+                    toast: true,
+                    position: 'bottom-end',
+                    timer: 2000,
+                    showConfirmButton: false,
+                    icon: 'success',
+                });
             }
             else{
                 $('#jumlah')[0].setCustomValidity('Jumlah melebihi sisa');
