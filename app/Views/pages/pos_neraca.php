@@ -5,9 +5,22 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <a  href="<?= base_url("posneraca/printexcel") ?>" class="btn btn-primary btn-icon-split"><span class="icon text-white-50">
-        <i class="fas fa-file-excel"></i></span><span class="text">Simpan ke excel</span></a>
+        <div class="row">
+            <div class="col-7">
+                <a  href="<?= base_url("posneraca/printexcel") ?>" class="btn btn-primary btn-icon-split"><span class="icon text-white-50">
+                <i class="fas fa-file-excel"></i></span><span class="text">Simpan ke excel</span></a>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col-4">Keterangan warna:</div>
+                    <div class="col table-secondary">belum diselesaikan</div>
+                    <div class="col">diselesaikan sebagian</div>
+                    <div class="col table-success">sudah diselesaikan</div>
+                </div>
+            </div>
+        </div>
     </div>
+    
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
