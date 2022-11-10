@@ -16,7 +16,7 @@ class Penyelesaian extends BaseController
         $persekotmodel = new PersekotModel();
         $bebanmodel = new BebanModel();
         $persekot = $persekotmodel->builder()->
-        select('id, narasi, sisa')->
+        select('id, narasi, sisa, nomor')->
         where('sisa > 0')->
         get()->getResultArray();
         $beban = $bebanmodel->findAll();

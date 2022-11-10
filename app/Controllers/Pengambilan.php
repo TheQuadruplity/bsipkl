@@ -23,7 +23,6 @@ class Pengambilan extends BaseController
             'sisa' => $this->request->getPost('jumlah'),
             'keterangan' => $this->request->getPost('keterangan')
         ];
-
         $model->insert($data);
         $jen = new JenisPersekotModel();
         $data['jenis'] = $jen->find($this->request->getPost('jenis'))['nama'];
