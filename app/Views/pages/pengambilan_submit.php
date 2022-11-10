@@ -21,7 +21,11 @@
 
     </div>
     <div class="card-footer">
-    <a href="<?= base_url('posneraca/printmemo/'.$id)?>" class="btn btn-primary btn-icon-split btn-sm" target="_blank"><span class="icon text-white-50">
-    <i class="fas fa-print"></i></span><span class="text">Print</span></a>
+        <a href="<?= base_url("pengambilan") ?>" class="btn btn-secondary btn-icon-split btn-sm"><span class="icon text-white-50">
+        <i class="fas fa-arrow-left"></i></span><span class="text">Kembali</span></a>
+        <a href="<?= base_url("posneraca") ?>" class="btn btn-secondary btn-icon-split btn-sm"><span class="icon text-white-50">
+        <i class="fas fa-file"></i></span><span class="text">Ke Riwayat Pengambilan</span></a>
+        <a href="<?= base_url('posneraca/printmemo/'.$id)?>" class="btn btn-primary btn-icon-split btn-sm" target="_blank"><span class="icon text-white-50">
+        <i class="fas fa-print"></i></span><span class="text">Print</span></a>
     </div>
 </div>
