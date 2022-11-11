@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\AdminModel;
 use App\Models\JurnalModel;
 use CodeIgniter\Model;
 use DateInterval;
@@ -48,9 +49,11 @@ class Jurnal extends BaseController
 
     public function print_j($awal, $akhir){
         $model = new JurnalModel();
+        $mans = new AdminModel();
         $data['data'] = $model->getJurnal($awal, $akhir);
         $data['awal'] = $awal;
         $data['akhir'] = $akhir;
+        $data['man'] = $mans->builder()->select('area_manager, pj_aosm')->get()->getRowArray();
         echo view('prints/jurnal', $data);
     }
 }
