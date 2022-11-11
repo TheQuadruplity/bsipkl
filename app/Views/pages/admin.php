@@ -146,56 +146,62 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="row-2">
-          <div class="col">00</div>
+        <div class="row">
+          <div class="col-1">00</div>
           <div class="col">custom baru</div>
         </div>
-        <div class="row-2">
-          <div class="col">01</div>
+        <div class="row">
+          <div class="col-1">01</div>
           <div class="col">Pengambilan baru</div>
         </div>
-        <div class="row-2">
-          <div class="col">02</div>
+        <div class="row">
+          <div class="col-1">02</div>
           <div class="col">Penyelesaian baru</div>
         </div>
-        <div class="row-2">
-          <div class="col">03</div>
+        <div class="row">
+          <div class="col-1">03</div>
           <div class="col">Jenis Persekot baru</div>
         </div>
-        <div class="row-2">
-          <div class="col">04</div>
+        <div class="row">
+          <div class="col-1">04</div>
           <div class="col">Beban baru</div>
         </div>
-        <div class="row-2">
-          <div class="col">16</div>
+        <hr>
+        <div class="row">
+          <div class="col-1">16</div>
           <div class="col">custom update</div>
         </div>
-        <div class="row-2">
-          <div class="col">19</div>
+        <div class="row">
+          <div class="col-1">17</div>
+          <div class="col">Pengambilan update</div>
+        </div>
+        <div class="row">
+          <div class="col-1">19</div>
           <div class="col">Jenis Persekot update</div>
         </div>
-        <div class="row-2">
-          <div class="col">20</div>
+        <div class="row">
+          <div class="col-1">20</div>
           <div class="col">Beban update</div>
         </div>
-        <div class="row-2">
-          <div class="col">32</div>
+        <hr>
+        <div class="row">
+          <div class="col-1">32</div>
           <div class="col">custom hapus</div>
         </div>
-        <div class="row-2">
-          <div class="col">33</div>
+        <div class="row">
+          <div class="col-1">33</div>
           <div class="col">Pengambilan hapus</div>
         </div>
-        <div class="row-2">
-          <div class="col">34</div>
+        <div class="row">
+          <div class="col-1">34</div>
           <div class="col">Penyelesaian hapus</div>
         </div>
-        <div class="row-2">
-          <div class="col">35</div>
+        <div class="row">
+          <div class="col-1">35</div>
           <div class="col">Jenis Persekot hapus</div>
         </div>
-        <div class="row-2">
-          <div class="col">36</div>
+        <div class="row">
+          <div class="col-1">36</div>
           <div class="col">Beban hapus</div>
         </div>
       </div>

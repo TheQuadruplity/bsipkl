@@ -68,6 +68,27 @@ class PosNeraca extends BaseController
         echo view('prints/persekot_excel', ['data' => $data]);
     }
 
+    public function update(){
+        if($this->request->getMethod() == 'post'){
+            $id = $this->request->getPost('id');
+            $model = new PersekotModel();
+            $model->update($id, [
+                'nomor' => $this->request->getPost('nomor'),
+                'narasi' => $this->request->getPost('narasi'),
+                'keterangan' => $this->request->getPost('keterangan'),
+            ]);
+            session()->set('swal',[
+                'title'=>'Berhasil',
+                'text'=>'Persekot berhasil diubah',
+                'icon'=>'success',
+            ]);
+            return redirect()->to(base_url('posneraca/detail/'.$id));
+        }
+        else{
+            return redirect()->to(base_url('posneraca'));
+        }
+    }
+
     private function terbilang($n){
         if($n == 0) return 'nol';
         $num = ['nol', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan'];

@@ -20,6 +20,10 @@
     <!-- Custom styles for this template-->
     <link href="<?= esc(base_url())?>/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <style type="text/css" media="print">
+        @page { size: landscape; }
+    </style>
+
 </head>
 
 <body>
@@ -73,9 +77,5 @@
             </tr>
         </tbody>
     </table>
-
-    <script>window.onfocus=window.close;
-    window.print();
-    </script>
 
 </body>
