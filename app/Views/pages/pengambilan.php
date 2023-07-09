@@ -51,7 +51,7 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <label for="nama">Nama Beban</label>
+            <label for="nama">Nama Jenis Persekot</label>
             <input type="text" class="form-control" id="addnama" placeholder="Masukkan nama jenis persekot" maxlength="50" required>
         </div>
         <div class="form-group">

@@ -46,7 +46,7 @@ class Admin extends BaseController
                 $msg = 'Username berhasil diubah!';
             }
             else if($this->request->getPost('password')){
-                $model->update(null,['password' => md5($this->request->getPost('password'))]);
+                $model->update(null,['password' => sha1($this->request->getPost('password'))]);
                 $msg = 'Password berhasil diubah!';
             }
             else if($this->request->getPost('manager')){

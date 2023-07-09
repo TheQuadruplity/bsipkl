@@ -74,6 +74,7 @@ class JenisPersekot extends BaseController
         $data = [];
         $res1 = $pmodel->builder()->select("id, narasi, waktu, jumlah, keterangan, nomor")
         ->where('jenis', $id)
+        ->where('YEAR(waktu) =', session()->get('ann'))
         ->orderBy('waktu', 'ASC')->get()->getResultArray();
         $saldo = 0;
         foreach($res1 as $r){
